@@ -5,14 +5,20 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent implements OnInit {
-  // Itt lehetnek osztályszintű változók, például statikus tartalmak vagy adatok
-  pageTitle: string = "Üdv a Film értékelő oldalamon!";
-  description: string = "This is the home page of our application. Feel free to explore and enjoy!";
+export class HomeComponent {
+  movies = [
+    { title: 'Film 1', imageUrl: 'path_to_image_1' },
+    { title: 'Film 2', imageUrl: 'path_to_image_2' },
+    { title: 'Film 3', imageUrl: 'path_to_image_3' },
+    { title: 'Film 4', imageUrl: 'path_to_image_4' },
+    { title: 'Film 5', imageUrl: 'path_to_image_5' },
+    { title: 'Film 6', imageUrl: 'path_to_image_6' },
+    { title: 'Film 7', imageUrl: 'path_to_image_7' },
+    { title: 'Film 8', imageUrl: 'path_to_image_8' },
+    
+    // további filmek...
 
-  constructor() { }
+  ];
 
-  ngOnInit(): void {
-    // Itt lehetnek inicializálási logikák, ha szükségesek
-  }
+  showShadow: boolean = false;
 }

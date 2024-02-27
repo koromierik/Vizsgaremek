@@ -1,11 +1,11 @@
 <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h2>Üdv A Film értékelő oldalamon!</h2>
-        <p>Ez a főoldal!</p>
-        <p>Feel free to explore and enjoy!</p>
-        <app-home></app-home>
-        </div>
+    <h1>Üdvözöllek a Film értékelőn!</h1>
+    <!-- <p>Válassz egy lehetőséget:</p> -->
+    
+    <div class="film-grid">
+      <div class="film" *ngFor="let movie of movies">
+        <img [src]="movie.imageUrl" alt="{{movie.title}}" (mouseover)="showShadow=true" (mouseout)="showShadow=false" [class.shadow]="showShadow">
+      </div>
     </div>
   </div>
   
