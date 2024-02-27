@@ -16,3 +16,13 @@
     margin-bottom: 10px;
   }
   
+  /* Főoldal háttérkép stílusai */
+.app-home {
+    background-image: url('assets/hatterkep.avif'); /* Háttérkép elérési útja */
+    background-size: cover; /* Háttér méretezése a konténerrel azonos méretűre */
+    background-position: center; /* Háttér kép pozíciója középre igazítva */
+    padding: 150px 0; /* Belső tér margói */
+    text-align: center; /* Szöveg középre igazítása */
+    color: #fff; /* Szöveg színe */
+  }
+  
