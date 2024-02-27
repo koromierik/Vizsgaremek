@@ -1,24 +1,4 @@
-/* Alapvető formázás */
-.navbar {
-  margin-bottom: 20px; /* Válaszd ki az átlátható sáv, ha a felső elemek nem átláthatóak */
-}
-
-/* Navigációs sáv háttérszíne */
-.navbar-light {
-  background-color: #f8f9fa; /* Adj meg egy háttérszínt */
-}
-
-/* Aktív menüpont stílus */
-.nav-link.active {
-  font-weight: bold; /* Félkövér betűtípus az aktív menüpontoknál */
-}
-
-/* Nyilak stílusa a lenyíló menühöz */
-.navbar-toggler-icon {
-  border-color: #007bff; /* Szín az alapértelmezett Bootstrap kék színre */
-}
-
-/* Egérmutató pointer a navigációs linkeken */
-.nav-link {
-  cursor: pointer;
+.navbar-nav .nav-link {
+  padding: 0.5rem 1rem; 
+  margin-right: 10px;
 }
