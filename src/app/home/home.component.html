@@ -3,13 +3,11 @@
     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum non commodi, iure quisquam error eos. Harum, enim. Temporibus, ducimus dolore. Temporibus sint quam eveniet incidunt voluptatibus? Blanditiis veniam magni corporis labore ullam quisquam eveniet amet saepe vero sapiente tempora animi esse voluptatem, soluta ut eius dolorem laborum, inventore alias odio?</p>
     
     <div class="film-grid">
-      <!-- Első sor -->
       <div class="film-row">
         <div class="film" *ngFor="let movie of movies.slice(0, 4)">
           <img [src]="movie.imageUrl" alt="{{movie.title}}" (mouseover)="showShadow=true" (mouseout)="showShadow=false" [class.shadow]="showShadow">
         </div>
       </div>
-      <!-- Második sor -->
       <div class="film-row">
         <div class="film" *ngFor="let movie of movies.slice(4, 8)">
           <img [src]="movie.imageUrl" alt="{{movie.title}}" (mouseover)="showShadow=true" (mouseout)="showShadow=false" [class.shadow]="showShadow">
