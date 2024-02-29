@@ -1,4 +1,6 @@
 .navbar-nav .nav-link {
   padding: 0.5rem 1rem; 
-  margin-right: 10px;
+  margin-inline: 30px;
+  margin-left: auto;
 }
+
