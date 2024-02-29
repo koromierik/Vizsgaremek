@@ -7,14 +7,14 @@
       <div class="film" *ngFor="let movie of movies.slice(0, 4)">
         <img [src]="movie.imageUrl" alt="{{movie.title}}" (mouseover)="showShadow=true" (mouseout)="showShadow=false" [class.shadow]="showShadow">
         <h5>{{ movie.title }}</h5>
-        <p>{{ movie.description }}</p> <!-- Description hozzáadása -->
+        <p>{{ movie.description }}</p> 
       </div>
     </div>
     <div class="film-row">
       <div class="film" *ngFor="let movie of movies.slice(4, 8)">
         <img [src]="movie.imageUrl" alt="{{movie.title}}" (mouseover)="showShadow=true" (mouseout)="showShadow=false" [class.shadow]="showShadow">
         <h5>{{ movie.title }}</h5>
-        <p>{{ movie.description }}</p> <!-- Description hozzáadása -->
+        <p>{{ movie.description }}</p>
       </div>
     </div>
   </div>
