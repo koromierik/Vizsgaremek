@@ -1,11 +1,14 @@
 .navbar-nav .nav-link {
-  padding: 0.5rem 1rem; 
-  margin-inline: 30px;
+  padding: 5px; 
+  margin-inline: 40px;
   margin-left: auto;
 }
 .navbar-nav {
   margin-left: auto;
   
+}
+
+.container {
 
 }
 
