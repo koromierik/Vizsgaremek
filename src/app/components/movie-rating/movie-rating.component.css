@@ -4,6 +4,12 @@
     padding: 20px;
   }
   
+h4{
+    font-size: 25px;
+    margin-bottom: 3px; 
+    
+  } 
+
   .movie-item {
     margin-bottom: 20px;
     border: 1px solid #ccc;

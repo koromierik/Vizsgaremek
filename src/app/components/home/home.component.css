@@ -18,9 +18,9 @@ p {
 }
 
 h5  {
-  font-size: 1px;
+  font-size: 17px;
   margin-bottom: 3px;
-
+  line-height: 0,5;
 }
 
 .film-grid {

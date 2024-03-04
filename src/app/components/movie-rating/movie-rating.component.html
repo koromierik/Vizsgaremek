@@ -1,7 +1,7 @@
 <div class="container">
-    <h1>Film értékelések</h1>
+    <h2>Film értékelések</h2>
     <div *ngFor="let movie of movies" class="movie-item">
-      <h2>{{ movie.title }}</h2>
+      <h4>{{ movie.title }}</h4>
       <p><strong>Megjelenés dátuma: </strong> <strong>{{ movie.year }}</strong></p>
       <p>{{ movie.description }}</p>
       <div class="rating">
