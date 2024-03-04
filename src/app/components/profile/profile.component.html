@@ -1,38 +1,46 @@
 <div class="container">
-    <h1>Profil</h1>
-    <div>
-      <p><strong>Felhasználónév:</strong> {{ username }}</p>
-      <p><strong>E-mail cím:</strong> {{ email }}</p>
-    </div>
-    <button (click)="editProfile()">Profil szerkesztése</button>
-    <button (click)="logout()">Kijelentkezés</button>
-  </div>  
-  <div class="modal" [ngClass]="{'is-active': isEditProfileModalOpen}">
-    <div class="modal-background" (click)="closeEditProfileModal()"></div>
-    <div class="modal-card">
-      <header class="modal-card-head">
-        <p class="modal-card-title">Profil szerkesztése</p>
-        <button class="delete" aria-label="close" (click)="closeEditProfileModal()"></button>
-      </header>
-      <section class="modal-card-body">
-        <form (submit)="saveChanges()">
-          <div class="field">
-            <label class="label">Felhasználónév</label>
-            <div class="control">
-              <input class="input" type="text" [(ngModel)]="editedUsername" name="username" required>
-            </div>
-          </div>
-          <div class="field">
-            <label class="label">E-mail cím</label>
-            <div class="control">
-              <input class="input" type="email" [(ngModel)]="editedEmail" name="email" required>
-            </div>
-          </div>
-          <div class="field">
-            <button class="button is-primary" type="submit">Mentés</button>
-            <button class="button" type="button" (click)="closeEditProfileModal()">Mégse</button>
-          </div>
-        </form>
-      </section>
-    </div>
+  <h3>Profil</h3>
+  <div>
+    <p><strong>Felhasználónév:</strong> {{ username }}</p>
+    <p><strong>E-mail cím:</strong> {{ email }}</p>
+    <p><strong>Születési dátum:</strong> {{ birthdate }}</p>
   </div>
+  <button (click)="editProfile()">Profil szerkesztése</button>
+  <button (click)="logout()">Kijelentkezés</button>
+</div>  
+
+<div class="modal" [ngClass]="{'is-active': isEditProfileModalOpen}">
+  <div class="modal-background" (click)="closeEditProfileModal()"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Profil szerkesztése</p>
+      <button class="delete" aria-label="close" (click)="closeEditProfileModal()"></button>
+    </header>
+    <section class="modal-card-body">
+      <form (submit)="saveChanges()">
+        <div class="field">
+          <label class="label">Felhasználónév</label>
+          <div class="control">
+            <input class="input" type="text" [(ngModel)]="editedUsername" name="username" required>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">E-mail cím</label>
+          <div class="control">
+            <input class="input" type="email" [(ngModel)]="editedEmail" name="email" required>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Születési dátum</label>
+          <div class="control">
+            <input class="input" type="date" [(ngModel)]="editedBirthdate" name="birthdate" required>
+          </div>
+        </div>
+        <div class="field">
+          <button class="button is-primary" type="submit">Mentés</button>
+          <button class="button" type="button" (click)="closeEditProfileModal()">Mégse</button>
+        </div>
+      </form>
+    </section>
+  </div>
+</div>

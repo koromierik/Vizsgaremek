@@ -7,14 +7,14 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
   movies = [
-    { title: 'Film 1', imageUrl: 'assets/kep1.webp', description: 'Első film leírása' },
-    { title: 'Film 2', imageUrl: 'assets/kep1.webp', description: 'Második film leírása' },
-    { title: 'Film 3', imageUrl: 'assets/kep1.webp', description: 'Harmadik film leírása' },
-    { title: 'Film 4', imageUrl: 'assets/kep1.webp', description: 'Negyedik film leírása' },
-    { title: 'Film 5', imageUrl: 'assets/kep1.webp', description: 'Ötödik film leírása' },
-    { title: 'Film 6', imageUrl: 'assets/kep1.webp', description: 'Hatodik film leírása' },
-    { title: 'Film 7', imageUrl: 'assets/kep1.webp', description: 'Hetedik film leírása' },
-    { title: 'Film 8', imageUrl: 'assets/kep1.webp', description: 'Nyolcadik film leírása'},
+    { title: 'Film 1', imageUrl: 'assets/thewolfofwallstreet2.jpg'},
+    { title: 'Film 2', imageUrl: 'assets/avatar.webp'},
+    { title: 'Film 3', imageUrl: 'assets/logan.jpg'},
+    { title: 'Film 4', imageUrl: 'assets/deadpool.jpg'},
+    { title: 'Film 5', imageUrl: 'assets/spiderman.avif'},
+    { title: 'Film 6', imageUrl: 'assets/ww1984.jpg'},
+    { title: 'Film 7', imageUrl: 'assets/topgun.jpg'},
+    { title: 'Film 8', imageUrl: 'assets/titanic.jpg'},
     
   ];
 

@@ -1,0 +1,24 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .movie-item {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 5px;
+  }
+  
+  .rating {
+    font-size: 20px;
+  }
+  
+  .star {
+    cursor: pointer;
+  }
+  
+  .star.checked {
+    color: gold;
+  }
+  

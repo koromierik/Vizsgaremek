@@ -1,20 +1,18 @@
 <div class="container">
-  <h1>Üdvözöllek a Film értékelőn!</h1>
-  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum non commodi, iure quisquam error eos. Harum, enim. Temporibus, ducimus dolore. Temporibus sint quam eveniet incidunt voluptatibus? Blanditiis veniam magni corporis labore ullam quisquam eveniet amet saepe vero sapiente tempora animi esse voluptatem, soluta ut eius dolorem laborum, inventore alias odio?</p>
+  <h3>Üdvözöllek a Film értékelőn!</h3>
+  <p>Válogass a felkapott filmek között kedvedre!</p>
   
   <div class="film-grid">
     <div class="film-row">
       <div class="film" *ngFor="let movie of movies.slice(0, 4)">
         <img [src]="movie.imageUrl" alt="{{movie.title}}" (mouseover)="showShadow=true" (mouseout)="showShadow=false" [class.shadow]="showShadow">
-        <h5>{{ movie.title }}</h5>
-        <p>{{ movie.description }}</p> 
+        <h5>{{ movie.title }}</h5> 
       </div>
     </div>
     <div class="film-row">
       <div class="film" *ngFor="let movie of movies.slice(4, 8)">
         <img [src]="movie.imageUrl" alt="{{movie.title}}" (mouseover)="showShadow=true" (mouseout)="showShadow=false" [class.shadow]="showShadow">
         <h5>{{ movie.title }}</h5>
-        <p>{{ movie.description }}</p>
       </div>
     </div>
   </div>
