@@ -1,6 +1,7 @@
-  <div class="container">
-    <div class="row">
-      <div class="col-8">
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <form (ngSubmit)="signUp()" #signupForm="ngForm">
         <div class="mb-3">
           <label for="name" class="form-label">Név</label>
           <input type="text" class="form-control" [(ngModel)]="name" name="name" required>
@@ -21,8 +22,10 @@
           <label for="birthDate" class="form-label">Születési dátum</label>
           <input type="date" class="form-control" [(ngModel)]="birthdate" name="birthDate" required>
         </div>
-        <button type="button" class="btn btn-primary mb-3" (click)="signUp()">Regisztrálok!</button>
-      </div>
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary">Regisztrálok!</button>
+        </div>
+      </form>
     </div>
   </div>
-  
+</div>

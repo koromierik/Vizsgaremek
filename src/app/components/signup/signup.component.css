@@ -1,5 +1,13 @@
 .container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
+    padding-top: 30px;
+    max-width: 400px;
+    margin: auto;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: white;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+  .col-md-8 {
+    background-color: #f8f9fa;
   }
