@@ -14,9 +14,6 @@ const routes: Routes = [
   { path : "login", component: LoginComponent },
   { path : "signup", component: SignupComponent },
   { path : "profile", component: ProfileComponent },
-  
-  // { path: 'movie/:id', component: MovieRatingComponent }
-
 
   { path: " ", component: HomeComponent },
   { path: "**", component: HomeComponent },
