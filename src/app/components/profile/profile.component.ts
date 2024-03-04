@@ -6,8 +6,8 @@ import { Component } from '@angular/core';
   styleUrl: './profile.component.css'
 })
 export class ProfileComponent {
-  username: string = 'johndoe';
-  email: string = 'johndoe@example.com';
+  username: string = 'KoromiErik';
+  email: string = '1erikmark@gmail.com';
 
   editedUsername: string = '';
   editedEmail: string = '';
