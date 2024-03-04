@@ -1,10 +1,12 @@
-.navbar-nav .nav-link {
-  padding: 5px; 
-  margin-inline: 40px;
-  margin-left: auto;
-  
-}
 .navbar-nav {
-  margin-left: auto;
+  padding: 5px; 
 }
 
+.nav-link {
+  padding: 2px; 
+  margin-inline: 17px;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
