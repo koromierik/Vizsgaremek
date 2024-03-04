@@ -2,6 +2,7 @@
     <h1>Film értékelések</h1>
     <div *ngFor="let movie of movies" class="movie-item">
       <h2>{{ movie.title }}</h2>
+      <p><strong>Megjelenés dátuma: </strong> <strong>{{ movie.year }}</strong></p>
       <p>{{ movie.description }}</p>
       <div class="rating">
         <span *ngFor="let star of [1, 2, 3, 4, 5]" class="star" [class.checked]="star <= movie.rating" (click)="rateMovie(movie, star)">
