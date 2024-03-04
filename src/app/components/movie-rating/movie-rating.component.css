@@ -1,15 +1,28 @@
 .container {
-    max-width: 800px;
+    max-width: 750px;
     margin: 0 auto;
     padding: 20px;
   }
   
 h4{
-    font-size: 25px;
+    font-size: 21px;
     margin-bottom: 3px; 
     
   } 
 
+ h6{
+  font-size: 15px;
+  color: gray;
+
+ } 
+
+  p{
+    font-size: 15px;
+    color: black;
+    margin-bottom: 8px;
+    line-height: 1.5;
+
+  }
   .movie-item {
     margin-bottom: 20px;
     border: 1px solid #ccc;
@@ -17,7 +30,8 @@ h4{
   }
   
   .rating {
-    font-size: 20px;
+    font-size: 27px;
+    border-color: black;
   }
   
   .star {
