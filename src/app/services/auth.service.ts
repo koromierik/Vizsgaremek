@@ -15,13 +15,20 @@ export class AutService {
   constructor(private http: HttpClient) {
     this.oneUser = this.userSubject.asObservable();
   }
-
+  
+  
   register(email: any, name: any, password: any, password_confirmation:any, birthdate: any ): Observable<any> {
     const userData = { email, name, password, password_confirmation, birthdate };
     return this.http.post(`${this.url}/register`, userData);
   }
 
+
   login(loginData:any){
     return this.http.post(`${this.url}/login`,loginData);
+  }
+
+
+  logout(){
+
   }
 }
