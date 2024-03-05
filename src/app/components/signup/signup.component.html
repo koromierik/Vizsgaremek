@@ -1,32 +1,36 @@
 <div class="container">
   <div class="row justify-content-center">
-    <h4 class="text-center">Regisztráció</h4>
-    <div class="col-md-8">
-      <form (ngSubmit)="signUp()" #signupForm="ngForm">
-        <div class="mb-3">
-          <label for="name" class="form-label">Név</label>
-          <input type="text" class="form-control" [(ngModel)]="name" name="name" required>
+    <div class="col-lg-15">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="text-center">Regisztráció</h4>
         </div>
-        <div class="mb-3">
-          <label for="email" class="form-label">Email cím</label>
-          <input type="email" class="form-control" [(ngModel)]="email" name="email" required>
+        <div class="card-body">
+          <form (ngSubmit)="signUp()" #signupForm="ngForm">
+            <div class="form-group">
+              <label for="name">Név:</label>
+              <input type="text" class="form-control" id="name" name="name" [(ngModel)]="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" class="form-control" id="email" name="email" [(ngModel)]="email" required>
+            </div>
+            <div class="form-group">
+              <label for="password">Jelszó:</label>
+              <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password" required>
+            </div>
+            <div class="form-group">
+              <label for="confirm_password">Jelszó megerősítése:</label>
+              <input type="password" class="form-control" id="confirm_password" name="confirm_password" [(ngModel)]="password_confirmation" required>
+            </div>
+            <div class="form-group">
+              <label for="birthDate">Születési dátum:</label>
+              <input type="date" class="form-control" id="birthDate" name="birthDate" [(ngModel)]="birthdate" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Regisztrálok</button>
+          </form>
         </div>
-        <div class="mb-3">
-          <label for="password" class="form-label">Jelszó</label>
-          <input type="password" class="form-control" [(ngModel)]="password" name="password" required>
-        </div>
-        <div class="mb-3">
-          <label for="confirm_password" class="form-label">Jelszó megerősítése</label>
-          <input type="password" class="form-control" [(ngModel)]="password_confirmation" name="confirm_password" required>
-        </div>
-        <div class="mb-3">
-          <label for="birthDate" class="form-label">Születési dátum</label>
-          <input type="date" class="form-control" [(ngModel)]="birthdate" name="birthDate" required>
-        </div>
-        <div class="d-grid">
-          <button type="submit" class="btn btn-primary">Regisztrálok!</button>
-        </div>
-      </form>
+      </div>
     </div>
   </div>
 </div>
