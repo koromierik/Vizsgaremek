@@ -6,7 +6,6 @@
           <h4 class="text-center">Regisztráció</h4>
         </div>
         <div class="card-body">
-          <form (ngSubmit)="signUp()" #signupForm="ngForm">
             <div class="form-group">
               <label for="name">Név:</label>
               <input type="text" class="form-control" id="name" name="name" [(ngModel)]="name" required>
@@ -17,7 +16,7 @@
             </div>
             <div class="form-group">
               <label for="password">Jelszó:</label>
-              <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password" required minlength="8">
+              <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password" required>
             </div>
             <div class="form-group">
               <label for="confirm_password">Jelszó megerősítése:</label>
@@ -27,8 +26,7 @@
               <label for="birthDate">Születési dátum:</label>
               <input type="date" class="form-control" id="birthDate" name="birthDate" [(ngModel)]="birthdate" required>
             </div>
-            <button type="submit" class="btn btn-primary btn-block">Regisztrálok</button>
-          </form>
+            <button type="submit" class="btn btn-primary btn-block">Regisztrálok!</button>
         </div>
       </div>
     </div>

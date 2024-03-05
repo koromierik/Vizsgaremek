@@ -14,25 +14,4 @@ export class SignupComponent {
   birthdate: string = '';
 
   constructor(private authService: AuthService) { }
-
-  signUp() {
-    const userData = {
-      name: this.name,
-      email: this.email,
-      password: this.password,
-      password_confirmation: this.password_confirmation,
-      birthdate: this.birthdate
-    };
-
-    this.authService.register(userData)
-      .subscribe(
-        (response) => {
-          console.log('Sikeres regisztráció!', response);
-        
-        },
-        (error) => {
-          console.error('Hiba történt a regisztráció során:', error);
-        }
-      );
-  }
 }

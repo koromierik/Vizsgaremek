@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable, throwError } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class AutService {
+export class AuthService {
   private userSubject = new BehaviorSubject<any>(null);
   oneUser: Observable<any>;
   loggedIn: boolean = false;
