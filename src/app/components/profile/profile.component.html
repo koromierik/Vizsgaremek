@@ -5,8 +5,10 @@
     <p><strong>E-mail cím:</strong> {{ email }}</p>
     <p><strong>Születési dátum:</strong> {{ birthdate }}</p>
   </div>
-  <button (click)="editProfile()">Profil szerkesztése</button>
-  <button (click)="logout()">Kijelentkezés</button>
+  <div class="buttons">
+    <button class="button is-primary" (click)="editProfile()">Profil szerkesztése</button>
+    <button class="button is-danger" (click)="logout()">Kijelentkezés</button>
+  </div>
 </div>  
 
 <div class="modal" [ngClass]="{'is-active': isEditProfileModalOpen}">
@@ -36,7 +38,7 @@
             <input class="input" type="date" [(ngModel)]="editedBirthdate" name="birthdate" required>
           </div>
         </div>
-        <div class="field">
+        <div class="buttons">
           <button class="button is-primary" type="submit">Mentés</button>
           <button class="button" type="button" (click)="closeEditProfileModal()">Mégse</button>
         </div>

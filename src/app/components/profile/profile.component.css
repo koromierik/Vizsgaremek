@@ -38,7 +38,7 @@
   }
   
   .modal-card-head {
-    padding: 20px;
+    padding: 15px;
     border-bottom: 1px solid #ccc;
     display: flex;
     justify-content: space-between;
@@ -46,12 +46,13 @@
   }
   
   .modal-card-title {
-    font-size: 1.2rem;
+    font-size: 20px;
     margin: 0;
   }
   
   .modal-card-body {
     padding: 20px;
+    font-size: 15px;
   }
   
   .modal-card-body .field {
