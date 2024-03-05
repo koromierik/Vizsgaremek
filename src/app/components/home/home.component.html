@@ -1,13 +1,12 @@
 <div class="container">
-  <h3>Üdvözöllek a Film értékelőn!</h3>
-  <p>Válogass a felkapott filmek között kedvedre!</p>
-  
+<h1>Üdvözöllek a Film értékelőn!</h1>
+<p>Válogass a felkapott filmek között kedvedre!</p>
   <div class="film-grid">
     <div class="film-row">
       <div class="film" *ngFor="let movie of movies.slice(0, 4)">
         <a [routerLink]="['/movie', movie.id]"> 
           <img [src]="movie.imageUrl" alt="{{movie.title}}" (mouseover)="showShadow=true" (mouseout)="showShadow=false" [class.shadow]="showShadow">
-          <h5>{{ movie.title }}</h5>
+          <h2>{{ movie.title }}</h2>
           <p>Megjelenés dátuma: {{ movie.releaseDate }}</p>
         </a>
       </div>
@@ -16,7 +15,7 @@
       <div class="film" *ngFor="let movie of movies.slice(4, 8)">
         <a [routerLink]="['/movie', movie.id]">
           <img [src]="movie.imageUrl" alt="{{movie.title}}" (mouseover)="showShadow=true" (mouseout)="showShadow=false" [class.shadow]="showShadow">
-          <h5>{{ movie.title }}</h5>
+          <h2>{{ movie.title }}</h2>
           <p>Megjelenés dátuma: {{ movie.releaseDate }}</p>
         </a>
       </div>
