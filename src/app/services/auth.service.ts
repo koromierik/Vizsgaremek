@@ -16,12 +16,12 @@ export class AutService {
     this.oneUser = this.userSubject.asObservable();
   }
 
-  registerUser(email: any, name: any, password: any, password_confirmation:any, birthdate: any ): Observable<any> {
+  register(email: any, name: any, password: any, password_confirmation:any, birthdate: any ): Observable<any> {
     const userData = { email, name, password, password_confirmation, birthdate };
     return this.http.post(`${this.url}/register`, userData);
   }
 
-  loginUser(loginData:any){
+  login(loginData:any){
     return this.http.post(`${this.url}/login`,loginData);
   }
 }
