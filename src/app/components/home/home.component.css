@@ -41,7 +41,8 @@ h5  {
 }
 
 .film img {
-  width: 85%; 
+  width: 88%; 
   height: auto;
-  max-width: 200px;
+  max-width: auto;
+  
 }
