@@ -7,32 +7,39 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }   
-h1    {
-  font-size: 19px;
-  
-}
 
+h1 {
+  font-size: 19px;
+  text-align: center;
+  margin-top: 10px;
+}
+.mb-3{
+  padding: 5px;
+  margin-left: 16px;
+  margin-right: 16px;
+
+
+}
 .card-header {
-  padding: 10px;
   margin-top: 5px;
 }
 
 .form-group {
-  padding: 3px;
+  padding: 5px;
   margin-top: 10px;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 label {
-  
-  margin-bottom: 5px;}
-
+  margin-bottom: 5px;
+}
 
 button {
   display: block;
   width: 100%;
   padding: 10px;
-  margin-top: 40px;
+  margin-top: 10px;
   margin-bottom: 5px;
   border: none;
   border-radius: 15px;
