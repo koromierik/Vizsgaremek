@@ -59,7 +59,7 @@ export class SignupComponent {
         },
         (error: any) => {
           console.error('Regisztrációs hiba:', error);
-          alert('A megadott e-mail cím már regisztrálva van.');
+          alert('A megadott emaillal már regisztrálva van.');
         }
       );
     } else {

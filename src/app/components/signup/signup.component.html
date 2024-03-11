@@ -10,7 +10,7 @@
   <div class="mb-3">
     <label for="email" class="form-label">Email</label>
     <input type="email" class="form-control" [(ngModel)]="email" required>
-    <div *ngIf="email && !isValidEmail" class="text">Nem megfelelő email formátum!</div>
+    <div *ngIf="email && !isValidEmail" class="text">Nem megfelelő az email formátum!</div>
   </div>
   <div class="mb-3">
     <label for="password" class="form-label">Jelszó</label>
@@ -26,5 +26,5 @@
     <label for="birthdate" class="form-label">Születési dátum</label>
     <input type="date" class="form-control" [(ngModel)]="birthdate" required>
   </div>
-  <button type="button" class="btn btn-primary mb-3 me-3" (click)="signUp()" [disabled]="!isFormValid()">Regisztrálok</button>
+  <button type="button" class="btn btn-primary mb-3" (click)="signUp()" [disabled]="!isFormValid()">Regisztrálok</button>
 </div>
