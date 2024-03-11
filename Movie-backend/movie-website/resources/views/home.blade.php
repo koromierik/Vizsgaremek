@@ -8,14 +8,14 @@
 <body>
     <h1>Welcome to Movie Rating App</h1>
 
-    @if($movies)
+     @if($movies)
         <h2>Ajánlott film</h2>
-        <h3>Title: {{ $movies->title }}</h3>
-        <p>Overview: {{ $movies->overview }}</p>
-        <!-- Display other details as needed -->
+        <h3>Cím: {{ $movies->title }}</h3>
+        <p>Leírás: {{ $movies->overview }}</p>
     @else
         <p>No featured movie available.</p>
     @endif
+
 
     <!-- Add more content as needed -->
 </body>
