@@ -38,12 +38,12 @@ export class SignupComponent {
   }
   signUp() {
     if (this.isFormValid()) {
-      this.auth.createUser(this.email, this.name, this.password, this.password_confirmation, this.birthdate).subscribe(
+      this.authService.createUser(this.email, this.name, this.password, this.password_confirmation, this.birthdate).subscribe(
         (response: any) => {
           const email = this.email;
           const password = this.password;
           const loginObj = { email, password };
-          this.auth.login(loginObj).subscribe(
+          this.authService.login(loginObj).subscribe(
             (res: any) => {
               if (res) {
                 this.handleSuccessfulLogin(res);
@@ -72,5 +72,5 @@ export class SignupComponent {
     sessionStorage.setItem("id", response.data.id);
     this.router.navigateByUrl("/home");
     alert("Sikeres bejelentkezés!");
-  }  
-}
+  }
+}  
