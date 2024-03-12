@@ -1,38 +1,62 @@
 import { Component } from '@angular/core';
+import { BaseService } from '../../services/base.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrl: './profile.component.css'
+  styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent {
-  username: string = 'KoromiErik';
-  email: string = '1erikmark@gmail.com';
-  birthdate: string = '2000-01-01';
 
-  editedUsername: string = '';
-  editedEmail: string = '';
-  editedBirthdate: string = '';
-  isEditProfileModalOpen: boolean = false;
+  name!: string;
+  email!: string;
+  birthdate!: Date;
 
-  editProfile() {
-    this.isEditProfileModalOpen = true;
-    this.editedUsername = this.username;
-    this.editedEmail = this.email;
-    this.editedBirthdate = this.birthdate;
+  constructor(private userHandling: BaseService, private router: Router) { }
+
+  ngOnInit() {
+    this.getData();
   }
 
-  closeEditProfileModal() {
-    this.isEditProfileModalOpen = false;
+  updateProfile() {
+    this.userHandling.updateProfile(this.birthdate, this.name, this.email).subscribe((res: any) => {
+      if (res) {
+        this.showUpdateMessage();
+        this.getData();
+      } else {
+        console.error('Error updating profile: ', res.message);
+      }
+    });
   }
 
-  saveChanges() {
-    this.username = this.editedUsername;
-    this.email = this.editedEmail;
-    this.birthdate = this.editedBirthdate;
-    this.isEditProfileModalOpen = false;
+  showUpdateMessage() {
+    console.log("Profil frissítve!");
   }
 
-  logout() {
+  showDeleteMessage() {
+    console.log("Profil törölve!");
+  }
+
+  getData() {
+    const id = sessionStorage.getItem("id");
+    this.userHandling.getUserData(id).subscribe((userData: any) => {
+      this.name = userData.data.name;
+      this.email = userData.data.email;
+      this.birthdate = userData.data.birthdate;
+    });
+  }
+
+  deleteUser() {
+    const id = sessionStorage.getItem("id");
+    this.userHandling.deleteUser(id).subscribe((res: any) => {
+      if (res.success) {
+        console.log(res);
+        sessionStorage.removeItem("token");
+        sessionStorage.removeItem("id");
+        this.router.navigateByUrl("/home");
+        this.showDeleteMessage();
+      }
+    });
   }
 }

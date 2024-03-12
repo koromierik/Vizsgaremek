@@ -1,32 +1,64 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { BaseService } from '../../services/base.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent {
-  email: string = '';
-  password: string = '';
+export class LoginComponent implements OnInit {private url = "http://127.0.0.1:8001/api";
+loginForm!: FormGroup;
+constructor(private formBuilder: FormBuilder, private router:Router, private auth:AuthService,private base : BaseService){}
+ngOnInit(): void {
+  
+  this.loginForm = this.formBuilder.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', Validators.required],
+  });
 
-  constructor(private authService: AuthService) {}
+}
 
-  login() {
+onSubmit() {
+  
+  if (this.loginForm.valid) {
+    const email = this.loginForm.value.email;
+    const password = this.loginForm.value.password;
+    const loginObj= {
+      email,password
+    }
     
-    if (this.email && this.password) {
-      this.authService.login({ email: this.email, password: this.password })
-        .subscribe(
-          (response) => {
-            console.log('Bejelentkezés sikeres!', response);
-
-          },
-          (error) => {
-            console.error('Bejelentkezés sikertelen!', error)
+    this.auth.login(loginObj).subscribe((res:any)=>{
+      if(res){
+        this.base.getUserData(res.data.id).subscribe((result)=>{
+          
+          if(result.data.userlevel){
+            let role = "admin"
+            sessionStorage.setItem("role",role)
+            sessionStorage.setItem("token",res.data.token)
+            sessionStorage.setItem("id",res.data.id)
+            this.auth.updateRolesAfterLogin();
+            this.router.navigateByUrl("/home")
+          
+          }else{
+            let role = "user"
+            sessionStorage.setItem("role",role)
+            sessionStorage.setItem("token",res.data.token)
+            sessionStorage.setItem("id",res.data.id)
+            this.auth.updateRolesAfterLogin();
+            this.router.navigateByUrl("/home")
           }
-        );
-    } else {
-      console.error('Az email és a jelszó mezők kitöltése kötelező!');
+        })
+      }
+      else{
+        alert("Hibás email vagy jelszó!")
+      }
+    })
+  }
+  else{
+    return alert("Hibás a formátum!")
     }
   }
 }
