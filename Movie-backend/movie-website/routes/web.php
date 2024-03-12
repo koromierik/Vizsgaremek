@@ -18,7 +18,7 @@ Route::get('/', function () {
     
     $movies = DB::table('movies')->get();
 
-    return view('home');
+    return view('welcome');
 });
 
 Route::get('/', [HomeController::class, 'index']);

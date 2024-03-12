@@ -12,9 +12,16 @@
         <h2>Ajánlott film</h2>
         <h3>Cím: {{ $movies->title }}</h3>
         <p>Leírás: {{ $movies->overview }}</p>
+        <p>Weboldal: {{ $movies->homepage }}</p>
     @else
         <p>No featured movie available.</p>
     @endif
+
+    <form action="{{ route('movies.search') }}" method="POST">
+    @csrf
+    <input type="text" name="query" placeholder="Search for movies...">
+    <button type="submit">Search</button>
+</form>
 
 
     <!-- Add more content as needed -->

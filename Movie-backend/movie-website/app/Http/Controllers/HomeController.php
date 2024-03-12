@@ -15,11 +15,8 @@ class HomeController extends Controller
     public function index()
     {
         // Fetch a movie by its ID
-        $movies = DB::table('movies')->find(105864); 
-        
-        // Debugging: Dump and die to inspect $featuredMovie
-
-
+        $movies = DB::table('movies')->get(); 
+        dd($movies);
         // Return the home view with any necessary data
         return view('home', compact('movies'));
     }
