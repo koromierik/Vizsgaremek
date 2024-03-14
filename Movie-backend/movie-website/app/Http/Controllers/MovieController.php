@@ -6,20 +6,35 @@ use App\Models\Movie; // Import your Movie model
 
 class MovieController extends Controller
 {
-    public function search(Request $request)
+    <?php
+
+    namespace App\Http\Controllers;
+    
+    use Illuminate\Http\Request;
+    use Illuminate\Support\Facades\Http;
+    use App\Models\Movie;
+    
+    class MovieController extends Controller
     {
-        // Validate the incoming request
-        $request->validate([
-            'query' => 'required|string|max:255',
-        ]);
-
-        // Search for movies in the database based on the title
-        $movies = Movie::where('title', 'like', '%' . $request->input('query') . '%')->get();
-
-        if ($movies->isEmpty()) {
-            return redirect()->back()->with('error', 'No movies found for the given query.');
+        public function fetchAndStoreMovies(Request $request)
+        {
+            $response = Http::get('https://api.themoviedb.org/3/search/movie', [
+                'api_key' => '4edef3f60810eaa4e509974f9a952743',
+                'query' => $request->input('query'),
+            ]);
+    
+            $moviesData = $response->json()['results'];
+    
+            foreach ($moviesData as $movieData) {
+                Movie::create([
+                    'title' => $movieData['title'],
+                    'overview' => $movieData['overview'],
+                    'release_date' => $movieData['release_date'],
+                    // Additional fields
+                ]);
+            }
+    
+            return "Movies fetched and stored successfully";
         }
-
-        return view('search-results', compact('movies'));
     }
 }
