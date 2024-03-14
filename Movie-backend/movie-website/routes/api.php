@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,15 +21,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('/home', 'HomeController@index'); // Home page
+
 Route::get('/movies', 'MovieController@index'); // Movie list
 Route::get('/movies/{id}', 'MovieController@show'); // Movie details
 Route::post('/movies/search', [MovieController::class, 'search'])->name('movies.search');
 
 
 // Authentication routes
-Route::post('/login', 'AuthController@login');
-Route::post('/register', 'AuthController@register');
-Route::post('/logout', 'AuthController@logout')->middleware('auth:api');
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/logout', [AuthController::class, 'logout']);
 
 // User profile routes
 Route::get('/profile', 'UserController@profile')->middleware('auth:api');
