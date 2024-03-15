@@ -1,1 +1,15 @@
-<p>add-movie works!</p>
+<div class="container">
+    <h2>Film hozzáadása</h2>
+    <form (ngSubmit)="addMovie()">
+      <div class="form-group">
+        <label for="title">Cím:</label>
+        <input type="text" class="form-control" id="title" [(ngModel)]="movieTitle" name="title" required>
+      </div>
+      <div class="form-group">
+        <label for="description">Leírás:</label>
+        <textarea class="form-control" id="description" [(ngModel)]="movieDescription" name="description" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Hozzáadás</button>
+    </form>
+  </div>
+  

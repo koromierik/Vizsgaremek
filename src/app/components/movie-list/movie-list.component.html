@@ -1,5 +1,10 @@
 <div class="container">
     <h3>Filmek listája</h3>
-    <button class="btn btn-primary" (click)="openAddMovieModal()">Film hozzáadása</button>
-  </div>
+    <button routerLink="/add-movie" *ngIf="isAdmin">Film hozzáadása</button>
+      <div *ngIf="isAdmin">
+        <button (click)="addMovie()">Film hozzáadása</button>
+      </div>
+      
+      <app-movie-list></app-movie-list>
+    </div>
   

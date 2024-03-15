@@ -16,6 +16,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminComponent } from './admin/admin/admin.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 
 
@@ -32,6 +33,7 @@ import { AdminComponent } from './admin/admin/admin.component';
     ProfileComponent,
     FooterComponent,
     AdminComponent,
+    ChatComponent,
   ],
   imports: [
     BrowserModule,
