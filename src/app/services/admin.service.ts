@@ -24,18 +24,14 @@ export class AdminService {
   deleteUser(userId: number): Observable<void> {
     return this.http.delete<void>(`${this.url}/deleteuser?id=${userId}`);
   }
-  addMovie (movieTitle: string, movieDescription: string): Observable<any> {
-    const movie = {
-      title: movieTitle,
-      description: movieDescription
-    }
-    return this.http.post<any>(`${this.url}/addmovie`, movie);
-  }
 
-  updateMovie(){
-    return this.http.get<any>(`${this.url}/updatemovie`)
-  }
-  deleteMovie(){
-    return this.http.get<any>(`${this.url}/deletemovie`)
-  }
+  addMovie(): Observable<any[]> {
+  return this.http.get<any[]>(`${this.url}/addmovie`);
+}
+  updateMovie(): Observable<any> {
+  return this.http.get<any>(`${this.url}/updatemovie`);
+}
+  deleteMovie(): Observable<any> {
+  return this.http.get<any>(`${this.url}/deletemovie`);
+}
 }
