@@ -6,8 +6,7 @@
         <div class="mb-3">
           <label for="email">Email:</label>
       <input type="email" id="email" formControlName="email" class="form-control" required>
-      <div *ngIf="loginForm.get('email')?.hasError('email') && loginForm.get('email')?.touched" class="text-danger">
-      Nem megfelelő email formátum
+      <div *ngIf="loginForm.get('email')?.hasError('email') && loginForm.get('email')?.touched" class="text-danger">Nem megfelelő email formátum
       </div>
     </div>
       </div>
