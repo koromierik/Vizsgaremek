@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { MovieListComponent } from './components/movie-list/movie-list.component';
+import { AddMovieComponent } from './components/add-movie/add-movie.component';
 import { MovieRatingComponent } from './components/movie-rating/movie-rating.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
@@ -9,7 +9,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   { path : "home", component: HomeComponent },
-  { path : "movielist", component: MovieListComponent },
+  { path : "addmovie", component: AddMovieComponent },
   { path : "movierating", component: MovieRatingComponent },
   { path : "login", component: LoginComponent },
   { path : "signup", component: SignupComponent },

@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './components/home/home.component';
 import { AddMovieComponent } from './components/add-movie/add-movie.component';
-import { MovieListComponent } from './components/movie-list/movie-list.component';
 import { MovieRatingComponent } from './components/movie-rating/movie-rating.component';
 import { NavComponent } from './components/nav/nav.component';
 import { LoginComponent } from './components/login/login.component';
@@ -25,7 +24,6 @@ import { ChatComponent } from './components/chat/chat.component';
     AppComponent,
     HomeComponent,
     AddMovieComponent,
-    MovieListComponent,
     MovieRatingComponent,
     LoginComponent,
     NavComponent,
