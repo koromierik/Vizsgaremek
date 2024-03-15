@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './components/home/home.component';
 import { AddMovieComponent } from './components/add-movie/add-movie.component';
-import { MovieListComponent } from './components/movie-list/movie-list.component';
 import { MovieRatingComponent } from './components/movie-rating/movie-rating.component';
 import { NavComponent } from './components/nav/nav.component';
 import { LoginComponent } from './components/login/login.component';
@@ -14,7 +13,11 @@ import { SignupComponent } from './components/signup/signup.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdminComponent } from './admin/admin/admin.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { UsersComponent } from './admin/users/users.component';
+
 
 
 @NgModule({
@@ -22,20 +25,24 @@ import { FormsModule } from '@angular/forms';
     AppComponent,
     HomeComponent,
     AddMovieComponent,
-    MovieListComponent,
     MovieRatingComponent,
     LoginComponent,
     NavComponent,
     SignupComponent,
     ProfileComponent,
     FooterComponent,
+    AdminComponent,
+    ChatComponent,
+    UsersComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

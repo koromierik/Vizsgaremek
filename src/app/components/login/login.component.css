@@ -4,8 +4,8 @@
   padding: 15px;
   border-radius: 10px;
   background-color: white;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 35px;
+  margin-bottom: 94px;
 }   
 
 h1 {
@@ -16,8 +16,6 @@ h1 {
 .mb-3{
   margin-left: 16px;
   margin-right: 16px;
-
-
 }
 button {
   display: block;
@@ -26,10 +24,6 @@ button {
   border-radius: 15px;
   cursor: pointer;
   background-color: #007bff;
-  color: white;
+  color: white; 
 }
 
-button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}

@@ -8,69 +8,61 @@ import { Router } from '@angular/router';
   styleUrl: './signup.component.css'
 })
 export class SignupComponent {
-  
-  constructor(private authService: AuthService, private router: Router) { }
-
-  name: any
+  constructor(private auth: AuthService, private router: Router) { }
   email: any
+  name: any
   password: any
   password_confirmation: any
-  birthdate:  Date = new Date()
-
+  birthdate: Date = new Date()
   isValidEmail(email: string): boolean {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }
-
   isFormValid(): boolean {
     const isNameValid = !!this.name;
     const isEmailValid = this.isValidEmail(this.email);
     const isPasswordValid = !!this.password && this.password.length >= 8;
     const isPasswordConfirmationValid = this.password_confirmation === this.password;
-    const isBirthDateValid = !!this.birthdate;
-   
+    const isBirthdateValid = !!this.birthdate;
+
     return (
       isNameValid &&
       isEmailValid &&
       isPasswordValid &&
       isPasswordConfirmationValid &&
-      isBirthDateValid
+      isBirthdateValid
     );
   }
   signUp() {
     if (this.isFormValid()) {
-      this.authService.createUser(this.email, this.name, this.password, this.password_confirmation, this.birthdate).subscribe(
+      this.auth.createUser(this.email, this.name, this.password, this.password_confirmation, this.birthdate).subscribe(
         (response: any) => {
           const email = this.email;
           const password = this.password;
-          const loginObj = { email, password };
-          this.authService.login(loginObj).subscribe(
-            (res: any) => {
-              if (res) {
-                this.handleSuccessfulLogin(res);
-              } else {
-                alert("Sikertelen bejelentkezés.");
-              }
-            },
-            (error: any) => {
-              console.error('Bejelentkezési hiba:', error);
-              alert('Sikertelen bejelentkezés.');
+          const loginObj = {
+            email, password
+          }
+          this.auth.login(loginObj).subscribe((res: any) => {
+            if (res) {
+              this.showSuccessMessage()
+              sessionStorage.setItem("token", res.data.token)
+              sessionStorage.setItem("id", res.data.id)
+              this.router.navigateByUrl("/home")
             }
-          );
+            else {
+              alert("sikertelen bejelenkezés")
+            }
+          })
         },
         (error: any) => {
-          console.error('Regisztrációs hiba:', error);
-          alert('A megadott emaillal már regisztrálva van.');
+          console.error('Sign-up error:', error);
+          alert('A megadott email cím már regisztrálva van.');
         }
       );
     } else {
-      console.error('Az űrlap érvénytelen. Kérjük, ellenőrizze a megadott információkat.');
+      console.error('Form is not valid. Please check the entered information.');
     }
   }
-  
-  handleSuccessfulLogin(response: any) {
-    sessionStorage.setItem("token", response.data.token);
-    sessionStorage.setItem("id", response.data.id);
-    this.router.navigateByUrl("/home");
-    alert("Sikeres bejelentkezés!");
+  showSuccessMessage() {
+    let message = "Sikeres regisztráció!"
   }
-}  
+}

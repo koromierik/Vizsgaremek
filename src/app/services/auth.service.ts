@@ -40,9 +40,11 @@ export class AuthService {
   isLoggedIn(): boolean {
     return !!sessionStorage.getItem("token");
   }
-
+  
+  isAdmin(): boolean {
+    return this.userRoles.includes('admin');
+  }
   updateRolesAfterLogin(): void {
- 
     this.fetchUserRoles();
   }
 }
