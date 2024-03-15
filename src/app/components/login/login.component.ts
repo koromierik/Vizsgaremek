@@ -9,9 +9,11 @@ import { BaseService } from '../../services/base.service';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent implements OnInit {private url = "http://127.0.0.1:8001/api";
+export class LoginComponent implements OnInit {
+  private url = "http://127.0.0.1:8001/api";
+
 loginForm!: FormGroup;
-constructor(private formBuilder: FormBuilder, private router:Router, private auth:AuthService,private base : BaseService){}
+constructor(private router:Router, private auth:AuthService,private base : BaseService, private formBuilder: FormBuilder,){}
 ngOnInit(): void {
   
   this.loginForm = this.formBuilder.group({
@@ -41,8 +43,10 @@ onSubmit() {
             sessionStorage.setItem("id",res.data.id)
             this.auth.updateRolesAfterLogin();
             this.router.navigateByUrl("/home")
-          
-          }else{
+            }
+          })
+          }
+          else{
             let role = "user"
             sessionStorage.setItem("role",role)
             sessionStorage.setItem("token",res.data.token)
@@ -51,14 +55,9 @@ onSubmit() {
             this.router.navigateByUrl("/home")
           }
         })
+        }
+        else{
+          alert("Hibás email vagy jelszó!")
       }
-      else{
-        alert("Hibás email vagy jelszó!")
-      }
-    })
-  }
-  else{
-    return alert("Hibás a formátum!")
     }
   }
-}
