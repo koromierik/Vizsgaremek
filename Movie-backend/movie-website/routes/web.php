@@ -2,6 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MovieController;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
+use App\Models\Movie;
+use App\Models\User;
+use App\Models\Comment;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +21,12 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     
     $movies = DB::table('movies')->get();
 
     return view('welcome');
-});
+});*/
 
-Route::get('/', [HomeController::class, 'index']);
+//Route::get('/', [HomeController::class, 'index']);
+Route::post('/movies/search', [MovieController::class, 'search'])->name('movies.search');

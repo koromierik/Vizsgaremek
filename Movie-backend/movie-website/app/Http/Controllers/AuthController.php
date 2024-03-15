@@ -2,63 +2,52 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
 
-class AuthController extends Controller
+class MovieController extends Controller
 {
-    /**
-     * Login user and create token
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function login(Request $request)
+    public function search(Request $request)
     {
-        $credentials = $request->only('email', 'password');
-
-        if (Auth::attempt($credentials)) {
-            $user = Auth::user();
-            $token = $user->createToken('authToken')->accessToken;
-            return response()->json(['token' => $token], 200);
-        } else {
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }
-    }
-
-    /**
-     * Register a new user
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function register(Request $request)
-    {
+        // Validate the incoming request
         $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|string|email|unique:users',
-            'password' => 'required|string|min:6',
+            'query' => 'required|string|max:255',
         ]);
 
-        $user = new User([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
+        // Make API request to fetch movie details based on search query
+        $response = Http::get('https://api.themoviedb.org/3/search/movie', [
+            'api_key' => env('4edef3f60810eaa4e509974f9a952743'),
+            'query' => $request->input('query'),
         ]);
 
-        $user->save();
+        // Extract movie data from API response
+        $movies = $response->json()['results'];
 
-        return response()->json(['message' => 'User registered successfully'], 201);
-    }
+        if (count($movies) > 0) {
+            // Fetch details of the first movie
+            $movieData = $movies[0];
 
-    /**
-     * Logout user (Revoke the token)
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function logout()
-    {
-        Auth::user()->token()->revoke();
-        return response()->json(['message' => 'Successfully logged out'], 200);
+            // Download poster image
+            $imageUrl = 'https://image.tmdb.org/t/p/w500' . $movieData['poster_path'];
+            $image = file_get_contents($imageUrl);
+            $imageName = $movieData['title'] . '.jpg';
+
+            // Save image to storage
+            Storage::disk('public')->put('images/' . $imageName, $image);
+
+            // Save movie details to database
+            // Assuming you have a Movie model and a movies table
+            $movie = new \App\Models\Movie();
+            $movie->title = $movieData['title'];
+            $movie->overview = $movieData['overview'];
+            $movie->release_date = $movieData['release_date'];
+            $movie->poster_path = 'images/' . $imageName; // Store the image path
+            // Other movie details...
+            $movie->save();
+
+            return redirect()->back()->with('success', 'Movie added successfully.');
+        } else {
+            return redirect()->back()->with('error', 'No movies found for the given query.');
+        }
     }
 }
