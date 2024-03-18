@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+<form action="{{ route('movies.search') }}" method="POST">
+    @csrf
+    <input type="text" name="query" placeholder="Enter movie title">
+    <button type="submit">Search</button>
+</form>
+=======
 <?php
 use Illuminate\Support\Facades\Http;
 use App\Models\Movie;
@@ -22,3 +29,4 @@ public function fetchAndStoreMovies(Request $request)
 
     return "Movies fetched and stored successfully";
 }
+>>>>>>> 19f87f8f4242962dd534252b4df2fae48a39061e

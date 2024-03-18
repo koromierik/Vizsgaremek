@@ -16,7 +16,7 @@ class HomeController extends Controller
     {
         // Fetch a movie by its ID
         $movies = DB::table('movies')->get(); 
-        dd($movies);
+       
         // Return the home view with any necessary data
         return view('home', compact('movies'));
     }
