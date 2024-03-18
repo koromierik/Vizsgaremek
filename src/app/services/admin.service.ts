@@ -25,13 +25,22 @@ export class AdminService {
     return this.http.delete<void>(`${this.url}/deleteuser?id=${userId}`);
   }
 
-  addMovie(): Observable<any[]> {
-  return this.http.get<any[]>(`${this.url}/addmovie`);
-}
-  updateMovie(): Observable<any> {
-  return this.http.get<any>(`${this.url}/updatemovie`);
-}
-  deleteMovie(): Observable<any> {
-  return this.http.get<any>(`${this.url}/deletemovie`);
-}
+  addMovie(title: string, releaseYear: number): Observable<any> {
+    const movie = {
+      title,
+      releaseYear
+    };
+    return this.http.post<any>(`${this.url}/addmovie`, movie);
+  }
+  updateMovie(id: number, title: string, releaseYear: number): Observable<any> {
+    const movie = {
+      id,
+      title,
+      releaseYear
+    };
+    return this.http.put<any>(`${this.url}/updatemovie`, movie);
+  }
+  deleteMovie(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.url}/deletemovie?id=${id}`);
+  }
 }
