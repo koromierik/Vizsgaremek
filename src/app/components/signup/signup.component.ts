@@ -49,7 +49,7 @@ export class SignupComponent {
               this.router.navigateByUrl("/home")
             }
             else {
-              alert("sikertelen bejelenkezés")
+              alert("Sikertelen bejelenkezés")
             }
           })
         },
@@ -59,7 +59,7 @@ export class SignupComponent {
         }
       );
     } else {
-      console.error('Form is not valid. Please check the entered information.');
+      console.error('Az űrlap érvénytelen. Ellenőrizd a megadott információkat!');
     }
   }
   showSuccessMessage() {
