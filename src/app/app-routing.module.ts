@@ -17,6 +17,7 @@ const routes: Routes = [
   { path : "signup", component: SignupComponent },
   { path : "profile", component: ProfileComponent },
   { path: "admin", component: AdminComponent, canActivate: [], data: { roles: ['admin'] } },
+  { path: 'movierating/:id', component: MovieRatingComponent },
   { path: " ", component: HomeComponent },
   { path: "**", component: HomeComponent },
 ];

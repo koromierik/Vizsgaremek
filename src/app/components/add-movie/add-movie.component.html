@@ -1,39 +1,48 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-lg-6">  
-  <h2>Új film hozzáadása</h2>
-    <form (submit)="addMovie()">
-      <div class="form-group">
-        <label for="title">Film címe:</label>
-        <input type="text" class="form-control" id="title" [(ngModel)]="title" name="title" required>
-      </div>
-      <div class="form-group">
-        <label for="releaseYear">Kiadási év:</label>
-        <input type="number" class="form-control" id="releaseYear" [(ngModel)]="releaseYear" name="releaseYear" required>
-      </div>
-      <button type="submit" class="btn btn-primary">Hozzáadás</button>
-    </form>
+      <h2>Új film hozzáadása</h2>
+      <form (submit)="addMovie()">
+        <div class="form-group">
+          <label for="title">Film címe:</label>
+          <input type="text" class="form-control" id="title" [(ngModel)]="title" name="title" required>
+        </div>
+        <div class="form-group">
+          <label for="releaseYear">Kiadási év:</label>
+          <input type="number" class="form-control" id="releaseYear" [(ngModel)]="releaseYear" name="releaseYear" required>
+        </div>
+        <div class="form-group">
+          <label for="description">Leírás:</label>
+          <textarea class="form-control" id="description" [(ngModel)]="description" name="description" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Hozzáadás</button>
+      </form>
   
-    <h2>Film módosítása</h2>
-    <form (submit)="updateMovie()">
-      <div class="form-group">
-        <label for="updateTitle">Cím:</label>
-        <input type="text" class="form-control" id="updateTitle" [(ngModel)]="updateTitle" name="updateTitle" required>
-      </div>
-      <div class="form-group">
-        <label for="updateReleaseYear">Kiadási év:</label>
-        <input type="number" class="form-control" id="updateReleaseYear" [(ngModel)]="updateReleaseYear" name="updateReleaseYear" required>
-      </div>
-      <button type="submit" class="btn btn-primary">Módosítás</button>
-    </form>
+      <h2>Film módosítása</h2>
+      <form (submit)="updateMovie()">
+        <div class="form-group">
+          <label for="updateTitle">Cím:</label>
+          <input type="text" class="form-control" id="updateTitle" [(ngModel)]="updateTitle" name="updateTitle" required>
+        </div>
+        <div class="form-group">
+          <label for="updateReleaseYear">Kiadási év:</label>
+          <input type="number" class="form-control" id="updateReleaseYear" [(ngModel)]="updateReleaseYear" name="updateReleaseYear" required>
+        </div>
+        <div class="form-group">
+          <label for="updateDescription">Leírás:</label>
+          <textarea class="form-control" id="updateDescription" [(ngModel)]="updateDescription" name="updateDescription" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Módosítás</button>
+      </form>
   
-    <h2>Film törlése</h2>
-    <form (submit)="deleteMovie()">
-      <div class="form-group">
-        <label for="deleteId">Film azonosítója:</label>
-        <input type="number" class="form-control" id="deleteId" [(ngModel)]="deleteId" name="deleteId" required>
-      </div>
-      <button type="submit" class="btn btn-danger">Törlés</button>
-    </form>
+      <h2>Film törlése</h2>
+      <form (submit)="deleteMovie()">
+        <div class="form-group">
+          <label for="deleteId">Film azonosítója:</label>
+          <input type="number" class="form-control" id="deleteId" [(ngModel)]="deleteId" name="deleteId" required>
+        </div>
+        <button type="submit" class="btn btn-danger">Törlés</button>
+      </form>
+    </div>
   </div>
-  
+</div>

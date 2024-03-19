@@ -10,15 +10,17 @@ import { AdminService } from '../../services/admin.service';
 export class AddMovieComponent {
   title: string = '';
   releaseYear: number = 0;
+  description: string = '';
   updateTitle: string = '';
   updateReleaseYear: number = 0;
+  updateDescription: string = '';
   deleteId: number = 0;
 
   constructor(private adminService: AdminService) { }
 
   addMovie(): void {
-    if (this.title && this.releaseYear) {
-      this.adminService.addMovie(this.title, this.releaseYear).subscribe(
+    if (this.title && this.releaseYear && this.description) {
+      this.adminService.addMovie(this.title, this.releaseYear, this.description).subscribe(
         () => {
           console.log('Film hozzáadva!');
         },
@@ -32,8 +34,8 @@ export class AddMovieComponent {
   }
 
   updateMovie(): void {
-    if (this.updateTitle && this.updateReleaseYear) {
-      this.adminService.updateMovie(this.deleteId, this.updateTitle, this.updateReleaseYear).subscribe(
+    if (this.updateTitle && this.updateReleaseYear && this.updateDescription) {
+      this.adminService.updateMovie(this.deleteId, this.updateTitle, this.updateReleaseYear, this.updateDescription).subscribe(
         () => {
           console.log('Film frissítve!');
         },

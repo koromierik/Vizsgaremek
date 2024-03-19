@@ -6,21 +6,17 @@
 
 h1 {
   font-size: 25px;
-  margin-bottom: 10px;
-    
+  margin-bottom: 10px;  
 }
 
 h2  {
   font-size: 17px;
   margin-bottom: 3px;
-  line-height: 0,5;
 }
 
 p {
   font-size: 15px;
   margin-bottom: 10px;
-  line-height: 1.5; 
-  
 }
 
 .film-grid {
@@ -32,7 +28,6 @@ p {
   display: flex; 
   justify-content: space-around; 
   margin-bottom: 8px;
-   
 }
 
 .film {
@@ -41,8 +36,6 @@ p {
 }
 
 .film img {
-  width: 88%; 
-  height: auto;
-  max-width: auto;
-  
+  max-width: 240px;
+  max-height: 230px;
 }

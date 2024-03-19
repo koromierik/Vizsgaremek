@@ -1,23 +1,42 @@
 <div class="container">
-<h1>Üdvözöllek a Film értékelőn!</h1>
-<p>Válogass a felkapott filmek között kedvedre!</p>
+  <h1>Üdvözöllek a Film értékelőn!</h1>
+  <p>Válogass a felkapott filmek között kedvedre!</p>
+  
   <div class="film-grid">
     <div class="film-row">
-      <div class="film" *ngFor="let movie of movies.slice(0, 4)">
-        <a [routerLink]="['/movie', movie.id]"> 
-          <img [src]="movie.imageUrl" alt="{{movie.title}}" (mouseover)="showShadow=true" (mouseout)="showShadow=false" [class.shadow]="showShadow">
-          <h2>{{ movie.title }}</h2>
-          <p>Megjelenés dátuma: {{ movie.releaseDate }}</p>
-        </a>
+      <div class="film" (click)="goToMovieDetail(1)">
+        <img src="assets/thewolfofwallstreet.jpg" alt="A Wall Street farkasa">
+        <h2>A Wall Street farkasa</h2>
+      </div>
+      <div class="film" (click)="goToMovieDetail(2)">
+        <img src="assets/avatar.webp" alt="Avatar: A víz útja">
+        <h2>Avatar: A víz útja</h2>
+      </div>
+      <div class="film" (click)="goToMovieDetail(3)">
+        <img src="assets/logan.jpg" alt="Logan">
+        <h2>Logan</h2>
+      </div>
+      <div class="film" (click)="goToMovieDetail(4)">
+        <img src="assets/deadpool.jpg" alt="Deadpool">
+        <h2>Deadpool</h2>
       </div>
     </div>
     <div class="film-row">
-      <div class="film" *ngFor="let movie of movies.slice(4, 8)">
-        <a [routerLink]="['/movie', movie.id]">
-          <img [src]="movie.imageUrl" alt="{{movie.title}}" (mouseover)="showShadow=true" (mouseout)="showShadow=false" [class.shadow]="showShadow">
-          <h2>{{ movie.title }}</h2>
-          <p>Megjelenés dátuma: {{ movie.releaseDate }}</p>
-        </a>
+      <div class="film" (click)="goToMovieDetail(5)">
+        <img src="assets/spiderman.jpg" alt="Pókember: Nincs hazaút">
+        <h2>Pókember: Nincs hazaút</h2>
+      </div>
+      <div class="film" (click)="goToMovieDetail(6)">
+        <img src="assets/ww1984.jpg" alt="Wonder Woman 1984">
+        <h2>Wonder Woman 1984</h2>
+      </div>
+      <div class="film" (click)="goToMovieDetail(7)">
+        <img src="assets/topgun.jpg" alt="Top Gun: Maverick">
+        <h2>Top Gun: Maverick</h2>
+      </div>
+      <div class="film" (click)="goToMovieDetail(8)">
+        <img src="assets/titanic.jpg" alt="Titanic">
+        <h2>Titanic</h2>
       </div>
     </div>
   </div>
