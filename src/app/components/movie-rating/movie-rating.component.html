@@ -1,9 +1,17 @@
 <div class="container">
-  <h2>Film részletei</h2>
-  <div *ngIf="movie">
-    <h3>{{ movie.title }}</h3>
-    <p>Kiadási év: {{ movie.releaseYear }}</p>
-    <p>Leírás: {{ movie.description }}</p>
-    <p>Értékelés: {{ movie.review }}</p>
+  <h1>Film értékelése</h1>
+  <h2>{{ movieTitle }}</h2>
+  <div>
+    <div>
+      <h3>Értékelés:</h3>
+      <select #ratingSelect>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <button (click)="submitRating(+ratingSelect.value)">Értékelés beküldése</button>
+    </div>
   </div>
 </div>

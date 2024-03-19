@@ -19,7 +19,8 @@ const routes: Routes = [
   { path : "profile", component: ProfileComponent },
   { path: "admin", component: AdminComponent, canActivate: [], data: { roles: ['admin'] }},
   { path: "users", component: UsersComponent, canActivate: [], data: { roles: ['admin'] }},
-  
+  { path: 'movie-rating/:id', component: MovieRatingComponent },
+
   { path: " ", component: HomeComponent },
   { path: "**", component: HomeComponent },
 ];

@@ -19,9 +19,8 @@ export class HomeComponent {
     
   ];
   constructor(private router: Router) {}
-
-  goToMovieDetail(id: number) {
-    this.router.navigate(['/movierating', id]);
-    
-  }
+    goToMovieDetail(movieId: number) {
+      this.router.navigate(['/movie-rating', movieId]);
+    }
+  
 }
