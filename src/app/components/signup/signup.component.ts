@@ -20,7 +20,7 @@ export class SignupComponent {
   isFormValid(): boolean {
     const isNameValid = !!this.name;
     const isEmailValid = this.isValidEmail(this.email);
-    const isPasswordValid = !!this.password && this.password.length >= 8;
+    const isPasswordValid = !!this.password && this.password.length >= 6;
     const isPasswordConfirmationValid = this.password_confirmation === this.password;
     const isBirthdateValid = !!this.birthdate;
 
@@ -43,13 +43,13 @@ export class SignupComponent {
           }
           this.auth.login(loginObj).subscribe((res: any) => {
             if (res) {
-              this.showSuccessMessage()
+              alert("Sikeres regisztráció!");
               sessionStorage.setItem("token", res.data.token)
               sessionStorage.setItem("id", res.data.id)
               this.router.navigateByUrl("/home")
             }
             else {
-              alert("Sikertelen bejelenkezés")
+              alert("Sikertelen bejelentkezés")
             }
           })
         },
@@ -59,10 +59,7 @@ export class SignupComponent {
         }
       );
     } else {
-      console.error('Az űrlap érvénytelen. Ellenőrizd a megadott információkat!');
+      console.error('Form is not valid. Please check the entered information.');
     }
-  }
-  showSuccessMessage() {
-    let message = "Sikeres regisztráció!"
   }
 }
