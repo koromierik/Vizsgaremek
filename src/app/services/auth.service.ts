@@ -9,7 +9,7 @@ import { BaseService } from './base.service';
 })
 export class AuthService {
 
-  private url = "http://127.0.0.1:8001/api";
+  private url = "http://127.0.0.1:8000/api";
   private userRoles: string[] = [];
   constructor(private http: HttpClient,private base: BaseService) {
     this.fetchUserRoles();
