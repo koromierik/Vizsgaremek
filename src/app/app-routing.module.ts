@@ -7,17 +7,19 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AdminComponent } from './admin/admin/admin.component';
+import { UsersComponent } from './admin/users/users.component';
 
 
 const routes: Routes = [
   { path : "home", component: HomeComponent },
-  { path : "addmovie", component: AddMovieComponent },
+  { path : "addmovie", component: AddMovieComponent, canActivate: [], data: { roles: ['admin'] }},
   { path : "movierating", component: MovieRatingComponent },
   { path : "login", component: LoginComponent },
   { path : "signup", component: SignupComponent },
   { path : "profile", component: ProfileComponent },
-  { path: "admin", component: AdminComponent, canActivate: [], data: { roles: ['admin'] } },
-  { path: 'movierating/:id', component: MovieRatingComponent },
+  { path: "admin", component: AdminComponent, canActivate: [], data: { roles: ['admin'] }},
+  { path: "users", component: UsersComponent, canActivate: [], data: { roles: ['admin'] }},
+  
   { path: " ", component: HomeComponent },
   { path: "**", component: HomeComponent },
 ];

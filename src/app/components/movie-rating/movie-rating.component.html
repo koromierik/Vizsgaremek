@@ -1,8 +1,8 @@
 <div class="container">
-    <h2>Film értékelések</h2>
+    <h1>Film értékelések</h1>
     <div *ngFor="let movie of movies" class="movie-item">
-      <h4>{{ movie.title }}</h4>
-      <h6>Megjelenés dátuma: {{ movie.year }}</h6>
+      <h2>{{ movie.title }}</h2>
+      <h3>Megjelenés dátuma: {{ movie.year }}</h3>
       <p>{{ movie.description }}</p>
       <div class="rating">
         <span *ngFor="let star of [1, 2, 3, 4, 5]" class="star" [class.checked]="star <= movie.rating" (click)="rateMovie(movie, star)">
