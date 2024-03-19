@@ -1,5 +1,5 @@
-  import { Component } from '@angular/core';
-  import { AdminService } from '../../services/admin.service';
+import { Component } from '@angular/core';
+import { MovieService } from '../../services/movie.service';
 
 
   @Component({
@@ -17,11 +17,11 @@
     updateDescription: string = '';
     deleteId: number = 0;
   
-    constructor(private adminService: AdminService) { }
+    constructor(private movieService: MovieService) { }
   
     addMovie(): void {
       if (this.title && this.releaseYear && this.description) {
-        this.adminService.addMovie(this.title, this.releaseYear, this.description, this.review).subscribe({
+        this.movieService.addMovie(this.title, this.releaseYear, this.description, this.review).subscribe({
           next: () => {
             console.log('Film hozzáadva!');
             alert('Film hozzáadva!');
@@ -38,7 +38,7 @@
     
     updateMovie(): void {
       if (this.updateTitle && this.updateReleaseYear && this.updateDescription) {
-        this.adminService.updateMovie(this.deleteId, this.updateTitle, this.updateReleaseYear, this.updateDescription, this.review).subscribe({
+        this.movieService.updateMovie(this.deleteId, this.updateTitle, this.updateReleaseYear, this.updateDescription, this.review).subscribe({
           next: () => {
             console.log('Film frissítve!');
             alert('Film frissítve!');
@@ -54,7 +54,7 @@
   
     deleteMovie(): void {
       if (this.deleteId) {
-        this.adminService.deleteMovie(this.deleteId).subscribe({
+        this.movieService.deleteMovie(this.deleteId).subscribe({
           next: () => {
             console.log('Film törölve!');
             alert('Film törölve!');
