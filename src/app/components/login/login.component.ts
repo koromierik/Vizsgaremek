@@ -10,7 +10,7 @@ import { BaseService } from '../../services/base.service';
   styleUrl: './login.component.css'
 })
 export class LoginComponent implements OnInit {
-  private url = "http://127.0.0.1:8001/api";
+  private url = "http://127.0.0.1:8000/api";
 
 loginForm!: FormGroup;
 constructor(private router:Router, private auth:AuthService,private base : BaseService, private formBuilder: FormBuilder,){}
