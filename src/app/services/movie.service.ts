@@ -46,4 +46,7 @@ export class MovieService {
     const movie = this.movies.find(m => m.id === movieId);
     return movie ? movie.title : 'Nincs találat';
 }
+submitRating(rating: number) {
+  console.log(`Film értékelése: ${rating}`);
+}
 }
