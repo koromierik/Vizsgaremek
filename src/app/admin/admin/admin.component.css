@@ -1,37 +1,26 @@
 .container {
-  margin-bottom: 12px;
+  margin-top: 50px;
 }
 
 .card {
-  max-width: 450px;
-  margin: auto;
-  padding: 15px;
-  border-radius: 10px;
-  background-color: white;
-  margin-top: 40px;
-  margin-bottom: 150px;
+  margin-bottom: 220px;
 }
 
 .card-title {
-  font-size: 24px;
-  text-align: center;
-  margin-top: 10px;
-}
-
-.card-text {
-  font-size: 18px;
-  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
   margin-bottom: 20px;
 }
 
-.btn {
-  width: 100%;
-  padding: 10px;
+.card-text {
+  font-size: 17px;
   margin-bottom: 10px;
-  border-radius: 15px;
-  cursor: pointer;
 }
 
 .btn-primary {
-  background-color: #007bff;
+  margin-top: 10px;
+  margin-bottom: 3px;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
 }
