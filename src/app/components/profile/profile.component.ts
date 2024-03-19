@@ -24,7 +24,7 @@ export class ProfileComponent {
         this.getData()
       }
       else {
-        console.error('Profil frissítése sikertelen: ',res.message);
+        console.error('A profil frissítése sikertelen: ',res.message);
       }
     }
     );

@@ -4,20 +4,25 @@
     padding: 20px;
   }
   
-h4{
-    font-size: 21px;
-    margin-bottom: 3px; 
+h1{
+  font-size: 30px;
+  margin-bottom:3px; 
     
   } 
 
- h6{
+ h2{
+  font-size: 17px;
+  
+ }
+h3  {
   font-size: 15px;
   color: gray;
+  margin-bottom: 3px;
 
- } 
+  } 
 
   p{
-    font-size: 15px;
+    font-size: 15   px;
     color: black;
     margin-bottom: 8px;
     line-height: 1.5;
