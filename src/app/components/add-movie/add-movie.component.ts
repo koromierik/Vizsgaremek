@@ -38,6 +38,7 @@ export class AddMovieComponent {
       this.adminService.updateMovie(this.deleteId, this.updateTitle, this.updateReleaseYear, this.updateDescription).subscribe(
         () => {
           console.log('Film frissítve!');
+
         },
         (error) => {
           console.error('Hiba történt a film frissítése során:', error);
