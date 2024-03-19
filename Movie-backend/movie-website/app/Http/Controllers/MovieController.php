@@ -1,40 +1,46 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Movie; // Import your Movie model
+use Illuminate\Support\Facades\Http;
+use App\Models\Movie;
 
 class MovieController extends Controller
 {
-    <?php
-
-    namespace App\Http\Controllers;
-    
-    use Illuminate\Http\Request;
-    use Illuminate\Support\Facades\Http;
-    use App\Models\Movie;
-    
-    class MovieController extends Controller
+    public function fetchAndStoreMovies(Request $request)
     {
-        public function fetchAndStoreMovies(Request $request)
-        {
-            $response = Http::get('https://api.themoviedb.org/3/search/movie', [
-                'api_key' => '4edef3f60810eaa4e509974f9a952743',
-                'query' => $request->input('query'),
+        $apiKey = env('TMDB_API_KEY');
+
+        $response = Http::get('https://api.themoviedb.org/3/search/movie', [
+            'api_key' => $apiKey,
+            'query' => $request->input('query'),
+        ]);
+
+        $moviesData = $response->json()['results'];
+
+        foreach ($moviesData as $movieData) {
+            Movie::create([
+                'title' => $movieData['title'] ?? null,
+                'overview' => $movieData['overview'] ?? null,
+                'release_date' => $movieData['release_date'] ?? null,
+                'adult' => $movieData['adult'] ?? null,
+                'backdrop_path' => $movieData['backdrop_path'] ?? null,
+                'belongs_to_collection' => $movieData['belongs_to_collection'] ?? null,
+                'budget' => $movieData['budget'] ?? null,
+                'homepage' => $movieData['homepage'] ?? null,
+                'imdb_id' => $movieData['imdb_id'] ?? null,
+                'original_language' => $movieData['original_language'] ?? null,
+                'original_title' => $movieData['original_title'] ?? null,
+                'popularity' => $movieData['popularity'] ?? null,
+                'poster_path' => $movieData['poster_path'] ?? null,
+                'revenue' => $movieData['revenue'] ?? null,
+                'runtime' => $movieData['runtime'] ?? null,
+                'status' => $movieData['status'] ?? null,
+                'tagline' => $movieData['tagline'] ?? null,
             ]);
-    
-            $moviesData = $response->json()['results'];
-    
-            foreach ($moviesData as $movieData) {
-                Movie::create([
-                    'title' => $movieData['title'],
-                    'overview' => $movieData['overview'],
-                    'release_date' => $movieData['release_date'],
-                    // Additional fields
-                ]);
-            }
-    
-            return "Movies fetched and stored successfully";
         }
+
+        return "Movies fetched and stored successfully";
     }
 }

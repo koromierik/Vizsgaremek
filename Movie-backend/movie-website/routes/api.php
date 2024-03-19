@@ -24,7 +24,7 @@ Route::get('/home', 'HomeController@index'); // Home page
 
 Route::get('/movies', 'MovieController@index'); // Movie list
 Route::get('/movies/{id}', 'MovieController@show'); // Movie details
-Route::post('/movies/search', [MovieController::class, 'search'])->name('movies.search');
+Route::post('/movies/search', [MovieController::class, 'fetchAndStoreMovies'])->name('movies.search');
 
 
 // Authentication routes
