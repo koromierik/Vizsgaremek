@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { AddMovieComponent } from './components/add-movie/add-movie.component';
 import { MovieRatingComponent } from './components/movie-rating/movie-rating.component';
@@ -12,10 +14,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminComponent } from './admin/admin/admin.component';
-import { ChatComponent } from './components/chat/chat.component';
 import { UsersComponent } from './admin/users/users.component';
 
 
@@ -32,7 +31,6 @@ import { UsersComponent } from './admin/users/users.component';
     ProfileComponent,
     FooterComponent,
     AdminComponent,
-    ChatComponent,
     UsersComponent,
   ],
   imports: [
@@ -41,7 +39,7 @@ import { UsersComponent } from './admin/users/users.component';
     NgbModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
 
   ],
   providers: [],

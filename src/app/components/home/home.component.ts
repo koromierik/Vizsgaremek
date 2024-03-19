@@ -18,12 +18,10 @@ export class HomeComponent {
     { id: 8 , title: 'Titanic', releaseDate:'1997', imageUrl: 'assets/titanic.jpg'},
     
   ];
-
-  showShadow: boolean = false;
   constructor(private router: Router) {}
 
   goToMovieDetail(id: number) {
-    this.router.navigate(['/movie', id]);
+    this.router.navigate(['/movierating', id]);
     
   }
 }
