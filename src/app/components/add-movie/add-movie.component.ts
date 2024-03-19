@@ -20,62 +20,53 @@
     constructor(private adminService: AdminService) { }
   
     addMovie(): void {
-      if (this.title && this.releaseYear && this.description && this.review) {
-        this.adminService.addMovie(this.title, this.releaseYear, this.description, this.review).subscribe(
-          () => {
+      if (this.title && this.releaseYear && this.description) {
+        this.adminService.addMovie(this.title, this.releaseYear, this.description, this.review).subscribe({
+          next: () => {
             console.log('Film hozzáadva!');
             alert('Film hozzáadva!');
             this.resetForm();
           },
-          (error) => {
+          error: (error) => {
             console.error('Hiba történt a film hozzáadása során:', error);
             alert('Hiba történt a film hozzáadása során!');
           }
-        );
-      } else {
-        console.error('Hiányzó adatok. Kérjük, töltse ki az összes mezőt.');
-        alert('Hiányzó adatok. Kérjük, töltse ki az összes mezőt.');
+        });
       }
     }
   
+    
     updateMovie(): void {
       if (this.updateTitle && this.updateReleaseYear && this.updateDescription) {
-        this.adminService.updateMovie(this.deleteId, this.updateTitle, this.updateReleaseYear, this.updateDescription, this.review).subscribe(
-          () => {
+        this.adminService.updateMovie(this.deleteId, this.updateTitle, this.updateReleaseYear, this.updateDescription, this.review).subscribe({
+          next: () => {
             console.log('Film frissítve!');
             alert('Film frissítve!');
             this.resetUpdateForm();
           },
-          (error) => {
+          error: (error) => {
             console.error('Hiba történt a film frissítése során:', error);
             alert('Hiba történt a film frissítése során!');
           }
-        );
-      } else {
-        console.error('Hiányzó adatok. Kérjük, töltse ki az összes mezőt.');
-        alert('Hiányzó adatok. Kérjük, töltse ki az összes mezőt.');
+        });
       }
     }
   
     deleteMovie(): void {
       if (this.deleteId) {
-        this.adminService.deleteMovie(this.deleteId).subscribe(
-          () => {
+        this.adminService.deleteMovie(this.deleteId).subscribe({
+          next: () => {
             console.log('Film törölve!');
             alert('Film törölve!');
             this.resetDeleteForm();
           },
-          (error) => {
+          error: (error) => {
             console.error('Hiba történt a film törlése során:', error);
             alert('Hiba történt a film törlése során!');
           }
-        );
-      } else {
-        console.error('Hiányzó adatok. Kérjük, töltse ki az összes mezőt.');
-        alert('Hiányzó adatok. Kérjük, töltse ki az összes mezőt.');
+        });
       }
     }
-  
     private resetForm(): void {
       this.title = '';
       this.releaseYear = 0;
