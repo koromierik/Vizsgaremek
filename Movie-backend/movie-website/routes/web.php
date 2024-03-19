@@ -30,11 +30,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/test-movies-view', function () {
-    $movies = App\Models\Movie::all(); // Assuming you have a Movie model
-    return view('search-results', compact('movies'));
-});
+Route::get('/movies', [MovieController::class, 'fetchAndStoreMovies'])->name('movies.index');
 
-Route::get('/fetch-movies', [MovieController::class, 'fetchAndStoreMovies']);
+Route::post('/movies/search', [MovieController::class, 'fetchAndStoreMovies'])->name('movies.search');
 
 require __DIR__.'/auth.php';
