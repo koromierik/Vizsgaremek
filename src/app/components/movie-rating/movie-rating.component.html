@@ -1,14 +1,9 @@
 <div class="container">
-    <h1>Film értékelések</h1>
-    <div *ngFor="let movie of movies" class="movie-item">
-      <h2>{{ movie.title }}</h2>
-      <h3>Megjelenés dátuma: {{ movie.year }}</h3>
-      <p>{{ movie.description }}</p>
-      <div class="rating">
-        <span *ngFor="let star of [1, 2, 3, 4, 5]" class="star" [class.checked]="star <= movie.rating" (click)="rateMovie(movie, star)">
-            &#9733;
-          </span>
-      </div>
-    </div>
+  <h2>Film részletei</h2>
+  <div *ngIf="movie">
+    <h3>{{ movie.title }}</h3>
+    <p>Kiadási év: {{ movie.releaseYear }}</p>
+    <p>Leírás: {{ movie.description }}</p>
+    <p>Értékelés: {{ movie.review }}</p>
   </div>
-  
+</div>

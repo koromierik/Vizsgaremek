@@ -34,6 +34,10 @@ export class AdminService {
     };
     return this.http.post<any>(`${this.url}/addmovie`, movie);
   }
+  getMovie(id: number): Observable<any> {
+    return this.http.get<any>(`${this.url}/getmovie?id=${id}`);
+  }
+  
   updateMovie(id: number, title: string, releaseYear: number, description: string, review: string ): Observable<any> {
     const movie = {
       id,

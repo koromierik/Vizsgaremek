@@ -1,23 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AdminService } from '../../services/admin.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-movie-rating',
   templateUrl: './movie-rating.component.html',
   styleUrl: './movie-rating.component.css'
 })
-export class MovieRatingComponent {
-  movies = [
-    { title: 'A Wall Street farkasa', year: 2013 , description: 'A pénz sosem elég. Jordan Belfort (Leonardo DiCaprio) becsületes tőzsdeügynökként kezdte pályafutását, de az amerikai álom őt is utolérte. A 80-as évek végére az egyik legnagyobb brókercég tulajdonosa lett, 26 évesen heti 1 millió dollárt keresett. Az idáig vezető út azonban korrupcióval és tisztességtelen üzletekkel kikövezett csábító hullámvasútnak bizonyult. Mert minél nagyobb volt a kísértés ő annál többet akart, mit sem törődve az illegális üzelmekkel és a nyomában loholó FBI ügynökökkel. Még több pénz, még több hatalom, még több nő és megint még több pénz: ez Jordan életfilozófiája. És hogy a szerénység egy túlértékelt erény. Jordan és falkája azt sem tudták mit kezdjenek az illegálisan megszerzett milliárdokkal, de vajon a jéghegy csúcsáról merre vezet az út?', rating: 5 },
-    { title: 'Avatar: A víz útja', year: 2022 , description: 'Több mint egy évtizeddel az első rész eseményeit követően meséli el a Sully család (Jake, Neytiri és gyermekeik) történetét; a rájuk leselkedő veszélyeket, az életben maradásért vívott harcaikat, az őket sújtó tragédiákat és azt, meddig képesek elmenni, hogy biztonságban tudhassák egymást.', rating: 4 },
-    { title: 'Logan', year: 2017 , description: '2029-ben járunk, a mutánsok szétszéledtek. A megfáradt, magányos Logan a mexikói határ szélén, egy porfészekben bujkál, alkoholba fojtva bánatát. Társa a száműzetésben a csavargó Caliban, és a beteg X professzor, akinek elméjét súlyos rohamok gyötrik. Egyik nap egy titokzatos nő keresi fel Farkast. Egy különös kislánnyal érkezett, akit Logannek kellene biztonságba juttatnia. És a sokat próbált harcos elindul, hogy egy utolsó, életre-halálra szóló küldetés során beteljesítse sorsát.', rating: 5 },
-    { title: 'Deadpool', year: 2016 , description: 'A különleges erők egykori kommandósa egy félresikerült orvosi kísérlet következtében gyors regenerálódó képességre tesz szert. Új adottságával és sötét humorérzékével felfegyverkezve elkezdi levadászni azt az embert, aki majdnem tönkretette az életét.', rating: 2 },
-    { title: 'Pókember: Nincs hazaút', year: 2021 , description: 'A Pókember: Nincs Hazaút" újabb izgalmas fejezetet hoz az ikonikus szuperhős kalandjaiban. A film folytatja Peter Parker hihetetlen utazását, miközben próbálja egyensúlyban tartani hősies életét és személyes kapcsolatait. Amikor világméretű fenyegetés támad, Peternek szembe kell néznie a legnagyobb kihívással, amivel valaha szembenézett: a múltjával és a sorsával. Készülj fel egy lenyűgöző akcióra és mély érzelmekre egyaránt, miközben belevetülünk a Pókember univerzum legújabb kalandjába. Ne hagyd ki ezt a lenyűgöző filmélményt, amely mindenkit lenyűgöz!', rating: 4 },
-    { title: 'Wonder Woman 1984', year: 2020 , description: 'Diana Prince csendesen éli a szuperhősök hétköznapi életét a vibráló, csillogó ’80-as években: bár szuperképességeivel tisztában van, antropológusként dolgozik és csupán kis csodákkal teszi könnyebbé a halandók életét inkognitóban. Ám ez a túlzás korszaka is, amikor sokan úgy hiszik, hogy mindent megkaphatnak. Ez a törekvés vezérli Maxwell Lordot és a szuperképességeit Wonder Woman árnyékában kifejlesztő Cheetah-t is. Ahogy Maxwell és Cheetah egyre inkább saját elképzeléseik megszállottjává válnak és veszélybe sodorják a világot, Dianának is fel kell készülnie ellenfeleinek megzabolázására. Össze kell gyűjtenie minden erejét, bölcsességét és bátorságát, hogy szembeszállhasson a gazemberrel és az időközben emberfeletti erőre és gyorsaságra szert tevő Cheetah-val.', rating: 3 },
-    { title: 'Top Gun: Maverick', year: 2022 ,description: 'Miután több mint harminc évet szolgált a flotta egyik legjobb pilótájaként, Pete „Maverick” Mitchell (Tom Cruise) most a neki leginkább megfelelő helyen van: vakmerő tesztpilótaként egyre feljebb teszi a lécet, és ügyesen kitér az előléptetés elől, amely földi szolgálatra kötelezné. Amikor egy osztagnyi Top Gun növendéket olyan különleges küldetésre kell kiképeznie, amilyet élő pilóta még nem látott, Mavericket összehozza a sors a Rooster hívójelű Bradley Bradshaw hadnaggyal (Miles Teller, Whiplash), aki nem más, mint Maverick néhai barátjának, Nick Bradshawnak, azaz Goose-nak a fia...', rating: 2 },
-    { title: 'Titanic', year: 1997 , description: 'A Titanic 1997-ben bemutatott amerikai romantikus filmdráma és katasztrófafilm James Cameron írásában és rendezésében az elsüllyedő RMS Titanicról. A főszerepben Kate Winslet és Leonardo DiCaprio látható mint Rose DeWitt Bukater, illetve Jack Dawson, két különböző társadalmi osztály képviselői, akik egymásba szeretnek a hajó végzetes, 1912-es első útján. Bill Paxton alakítja Brock Lovettet, egy kincsvadász-expedíció vezetőjét, míg a történetet 1996-ban elmesélő idős Rose-t (új vezetéknevén Calvert) Gloria Stuart játssza. A további szerepekben Billy Zane mint Rose vőlegénye, Caledon Hockley, Kathy Bates mint Margaret "Molly" Brown, Frances Fisher mint Rose anyja, Ruth és Danny Nucci mint Jack legjobb barátja, Fabrizio De Rossi láthatók.', rating: 4 },
-  ];
+export class MovieRatingComponent implements OnInit {
+  movieId: number = 0;
+  movie: any = {};
 
-  rateMovie(movie: any, rating: number) {
-    movie.rating = rating;
+  constructor(private route: ActivatedRoute, private adminService: AdminService) { }
+
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.movieId = +params['id']; 
+      this.getMovie(this.movieId); 
+    });
+  }
+
+  getMovie(id: number): void {
+    this.adminService.getMovie(id).subscribe(
+      (data) => {
+        this.movie = data;
+      },
+      (error) => {
+        console.error('Hiba történt a film részleteinek lekérése során:', error);
+      }
+    );
   }
 }
