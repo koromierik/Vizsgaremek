@@ -1,8 +1,8 @@
-.footer {
-    position: relative; 
-    bottom: 0;  
-    width: 100%; 
-    background-color: #f8f9fa; 
-    color: white; 
-    padding: 20px; 
-  }
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+footer {
+  color: white;
+}
