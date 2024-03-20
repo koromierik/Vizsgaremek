@@ -8,20 +8,17 @@ import { Router } from '@angular/router';
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
-  // Az adatokat tároló változó
   userData: any;
 
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
-    // Elküldjük a HTTP GET kérést a Laravel Controllernek
+
     this.http.get<any>('http://127.0.0.1:8000/api/movies').subscribe({
       next: (response) => {
-        // Sikeres válasz esetén tároljuk az adatokat
         this.userData = response;
       },
       error: (error) => {
-        // Hibakezelés
         console.error('Error fetching data:', error);
       }
     });
