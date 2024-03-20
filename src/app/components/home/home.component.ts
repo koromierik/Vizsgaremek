@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,21 +7,23 @@ import { Router } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
-  movies = [
-    { id: 1 , title: 'A Wall Street farkasa', releaseDate:'2013', imageUrl: 'assets/thewolfofwallstreet.jpg'},
-    { id: 2 ,title: 'Avatar: A víz útja', releaseDate:'2022', imageUrl: 'assets/avatar.webp'},
-    { id: 3 ,title: 'Logan', releaseDate:'2017', imageUrl: 'assets/logan.jpg'},
-    { id: 4 ,title: 'Deadpool', releaseDate:'2016' ,imageUrl: 'assets/deadpool.jpg'},
-    { id: 5 , title: 'Pókember: Nincs hazaút', releaseDate:'2021', imageUrl: 'assets/spiderman.jpg'},
-    { id: 6 , title: 'Wonder Woman 1984', releaseDate:'2020', imageUrl: 'assets/ww1984.jpg'},
-    { id: 7 , title: 'Top Gun: Maverick', releaseDate:'2022', imageUrl: 'assets/topgun.jpg'},
-    { id: 8 , title: 'Titanic', releaseDate:'1997', imageUrl: 'assets/titanic.jpg'},
-    
-  ];
-  constructor(private router: Router) {}
-    goToMovieDetail(movieId: number) {
-      this.router.navigate(['/movie-rating', movieId]);
-    }
+  export class HomeComponent implements OnInit {
+    // Az adatokat tároló változó
+    userData: any;
   
-}
+    constructor(private http: HttpClient) { }
+  
+    ngOnInit(): void {
+      // Elküldjük a HTTP GET kérést a Laravel Controllernek
+      this.http.get<any>('URL_TO_LARAVEL_CONTROLLER_ENDPOINT').subscribe(
+        (response) => {
+          // Sikeres válasz esetén tároljuk az adatokat
+          this.userData = response;
+        },
+        (error) => {
+          // Hibakezelés
+          console.error('Error fetching data:', error);
+        }
+      );
+    }
+  }
