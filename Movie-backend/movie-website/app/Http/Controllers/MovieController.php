@@ -8,13 +8,14 @@ use App\Models\Movie;
 
 class MovieController extends Controller
 {
-    public function fetchAndStoreMovies(Request $request)
+    /*public function fetchAndStoreMovies(Request $request)
     {
         $apiKey = env('TMDB_API_KEY');
 
         $response = Http::get('https://api.themoviedb.org/3/search/movie', [
             'api_key' => $apiKey,
             'query' => $request->input('query'),
+            
         ]);
 
         $moviesData = $response->json()['results'];
@@ -41,6 +42,19 @@ class MovieController extends Controller
             ]);
         }
 
-        return "Movies fetched and stored successfully";
-    }
+        return redirect()->route('show.movies');
+    }*/
+    public function showMovies()
+{
+    $movies = Movie::all(); // Assuming you have a Movie model
+
+    return response()->json($movies);
+}
+
+public function showMovie($id)
+{
+    $movie = Movie::findOrFail($id); // Assuming you have a Movie model
+
+    return view('movie', ['movie' => $movie]);
+}
 }
