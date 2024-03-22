@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MovieLoaderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::get('/home', 'HomeController@index'); // Home page
 
-Route::get('/movies', 'MovieController@index'); // Movie list
+//Route::get('/movies', 'MovieController@index'); // Movie list
 Route::get('/movies/{id}', 'MovieController@show'); // Movie details
 Route::post('/movies/search', [MovieController::class, 'fetchAndStoreMovies'])->name('movies.search');
 
@@ -49,3 +50,5 @@ Route::post('/movies/{id}/comment', 'MovieController@addComment')->middleware('a
 Route::delete('/comments/{id}', 'CommentController@destroy')->middleware('auth:api');
 
 // Additional routes for other components (if needed)
+Route::get('/load-movies', [MovieLoaderController::class, 'loadMovies']);
+Route::get('/movies', [MovieController::class, 'showMovies'])->name('show.movies');

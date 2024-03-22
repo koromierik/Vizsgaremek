@@ -17,7 +17,7 @@ use App\Http\Controllers\MovieController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('movies');
 });
 
 Route::get('/dashboard', function () {
@@ -30,8 +30,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/movies', [MovieController::class, 'fetchAndStoreMovies'])->name('movies.index');
+//Route::get('/movies', [MovieController::class, 'fetchAndStoreMovies'])->name('movies.index');
 
 Route::post('/movies/search', [MovieController::class, 'fetchAndStoreMovies'])->name('movies.search');
 
 require __DIR__.'/auth.php';
+
+Route::get('/movies', [MovieController::class, 'showMovies'])->name('show.movies');
+Route::get('/movies/{id}', [MovieController::class, 'showMovie'])->name('show.movie');
