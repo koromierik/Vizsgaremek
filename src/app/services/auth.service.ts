@@ -23,6 +23,11 @@ export class AuthService {
     }
   }
 
+  createUser(email: any, name: any, password: any, password_confirmation: any, birthdate: any): Observable<any> {
+    const userData = { email, name, password, password_confirmation, birthdate };
+    return this.http.post(`${this.url}/userregister`, userData);
+  }
+
   login(loginObj: any): Observable<any> {
     return this.http.post(`${this.url}/userlogin`, loginObj);
   }
@@ -32,18 +37,14 @@ export class AuthService {
     return this.http.post(`${this.url}/userlogout`, {}, { headers });
   }
 
-  createUser(email: any, name: any, password: any, password_confirmation: any, birthdate: any): Observable<any> {
-    const userData = { email, name, password, password_confirmation, birthdate };
-    return this.http.post(`${this.url}/userregister`, userData);
-  }
- 
   isLoggedIn(): boolean {
     return !!sessionStorage.getItem("token");
   }
-  
+
   isAdmin(): boolean {
     return this.userRoles.includes('admin');
   }
+
   updateRolesAfterLogin(): void {
     this.fetchUserRoles();
   }

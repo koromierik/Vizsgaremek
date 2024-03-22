@@ -1,41 +1,12 @@
-.container {
-  max-width: 750px; 
-  margin: 0 auto; 
+.movie-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.movie-item {
+  width: 25%; 
   padding: 10px;
+  box-sizing: border-box;
 }
-
-h1 {
-  font-size: 25px;
-  margin-bottom: 10px;  
-}
-
-h2  {
-  font-size: 17px;
-  margin-bottom: 3px;
-}
-
-p {
-  font-size: 15px;
-  margin-bottom: 10px;
-}
-
-.film-grid {
-  display: flex; 
-  flex-direction: column; 
-}
-
-.film-row {
-  display: flex; 
-  justify-content: space-around; 
-  margin-bottom: 8px;
-}
-
-.film {
-  width: 70%; 
+.movie-item h1, .movie-item p, .movie-item img {
   text-align: center;
-}
-
-.film img {
-  max-width: 240px;
-  max-height: 230px;
 }
