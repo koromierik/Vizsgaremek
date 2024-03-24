@@ -12,13 +12,13 @@ import { UsersComponent } from './admin/users/users.component';
 
 const routes: Routes = [
   { path : "home", component: HomeComponent },
-  { path : "addmovie", component: AddMovieComponent, canActivate: [], data: { roles: ['admin'] }},
-  { path : "movierating", component: MovieRatingComponent },
+  { path : "addmovie", component: AddMovieComponent, data: { roles: ['admin'] }},
+  { path : "movierating", component: MovieRatingComponent, data: { roles: ['admin',"user"] }},
   { path : "login", component: LoginComponent },
-  { path : "signup", component: SignupComponent },
-  { path : "profile", component: ProfileComponent },
-  { path: "admin", component: AdminComponent, canActivate: [], data: { roles: ['admin'] }},
-  { path: "users", component: UsersComponent, canActivate: [], data: { roles: ['admin'] }},
+  { path : "signup", component: SignupComponent, data: { roles: ['admin',"user"] }},
+  { path : "profile", component: ProfileComponent, data: { roles: ['admin',"user"] }}, 
+  { path: "admin", component: AdminComponent, data: { roles: ['admin'] }},
+  { path: "users", component: UsersComponent, data: { roles: ['admin'] }},
   { path: 'movie-rating/:id', component: MovieRatingComponent },
 
   { path: " ", component: HomeComponent },

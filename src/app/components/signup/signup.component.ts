@@ -59,7 +59,7 @@ export class SignupComponent {
         }
       );
     } else {
-      console.error('Form is not valid. Please check the entered information.');
+      console.error('Az űrlap érvénytelen. Kérjük, ellenőrizze a megadott információkat.');
     }
   }
 }

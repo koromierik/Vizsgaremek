@@ -10,12 +10,7 @@ export class MovieService {
   private url = "http://127.0.0.1:8000/api";
   constructor(private http: HttpClient) { }
 
-  private movies = [
-    { id: 1, title: 'A Wall Street farkasa' },
-    { id: 2, title: 'Avatar: A víz útja' },
-    // Egyéb filmek...
-  ];
-
+  
   addMovie(title: string, releaseYear: number, description: string, review: string): Observable<any> {
     const movie = {
       title,
@@ -42,10 +37,7 @@ export class MovieService {
   deleteMovie(id: number): Observable<any> {
     return this.http.delete<any>(`${this.url}/deletemovie?id=${id}`);
   }
-  getMovieTitleById(movieId: number): string {
-    const movie = this.movies.find(m => m.id === movieId);
-    return movie ? movie.title : 'Nincs találat';
-}
+
 submitRating(rating: number) {
   console.log(`Film értékelése: ${rating}`);
 }
