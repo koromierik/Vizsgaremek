@@ -41,4 +41,8 @@ export class MovieService {
 submitRating(rating: number) {
   console.log(`Film értékelése: ${rating}`);
 }
+
+getMovieTitleById(movieId: number): Observable<string> {
+  return this.http.get<string>(`${this.url}/getmovietitle?id=${movieId}`);
+}
 }

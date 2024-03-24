@@ -17,7 +17,9 @@ export class MovieRatingComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.movieId = +params['id'];
-      this.movieTitle = this.movieService.getMovieTitleById(this.movieId);
+      this.movieService.getMovieTitleById(this.movieId).subscribe(title => {
+        this.movieTitle = title;
+      });
     });
   }
 
@@ -34,13 +36,10 @@ export class MovieRatingComponent implements OnInit {
     );
   }
   getMovieTitleById(movieId: number): string {
-      // Itt szerepelne a logika a film címének lekérésére az azonosító alapján
     return "Film címe";
-    
   }
 
 submitRating(rating: number) {
-  // Itt lehetne kezelni az értékelés beküldését, pl. elküldeni a szerverre
   console.log(`Film értékelése: ${rating}`);
   }
 }
