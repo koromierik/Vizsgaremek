@@ -1,17 +1,6 @@
 <div class="container">
   <h1>Film értékelése</h1>
-  <h2>{{ movieTitle }}</h2>
-  <div>
-    <div>
-      <h3>Értékelés:</h3>
-      <select #ratingSelect>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
-      <button (click)="submitRating(+ratingSelect.value)">Értékelés beküldése</button>
-    </div>
-  </div>
+  <h2>{{movie.title }}</h2>
+  <h2>{{movie.review }}</h2>
+  <h2>{{movie.rating }}</h2>
 </div>
