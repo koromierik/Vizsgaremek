@@ -4,31 +4,32 @@
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/home" routerLinkActive="active">Főoldal</a>
+          <a class="nav-link" routerLink="/home" routerLinkActive="selected" id="active">Főoldal</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/movierating" routerLinkActive="active">Film értékelések</a>
+          <a class="nav-link" routerLink="/movierating" routerLinkActive="selected" id="active" *ngIf="loggedin()">Film értékelések</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/profile" routerLinkActive="active">Profil</a>
-        </li>
-        <div class="navbar-nav mr-auto"></div>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/admin" routerLinkActive="active">Admin</a>
-        </li>
-      </ul>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/login" routerLinkActive="active">Bejelentkezés</a>
+          <a class="nav-link" routerLink="/addmovie" routerLinkActive="selected" id="active" *ngIf="admin()&&loggedin()">Film hozzáadása</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/signup" routerLinkActive="active">Regisztráció</a> 
+          <a class="nav-link" routerLink="/profile" routerLinkActive="selected" id="active" *ngIf="loggedin()">Profil</a>
         </li>
         <li class="nav-item">
-          <button class="nav-link btn btn-link" (click)="logout()">Kijelentkezés</button>
+          <a class="nav-link" routerLink="/admin" routerLinkActive="selected" id="active" *ngIf="admin()&&loggedin()">Admin</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login"  routerLink="/login" *ngIf="!loggedin()">Bejelentkezés</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/signup" routerLink="/signup" *ngIf="!loggedin()">Regisztráció</a> 
+        </li>
+        <li class="nav-item">
+          <button class="nav-link btn btn-link" (click)="logout()" *ngIf="loggedin()">Kijelentkezés</button>
         </li>
       </ul>
     </div>
