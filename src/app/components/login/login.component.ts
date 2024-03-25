@@ -10,7 +10,6 @@ import { BaseService } from '../../services/base.service';
   styleUrl: './login.component.css'
 })
 export class LoginComponent implements OnInit {
-  private url = "http://127.0.0.1:8000/api";
 
 loginForm!: FormGroup;
 constructor(private router:Router, private auth:AuthService,private base : BaseService, private formBuilder: FormBuilder,){}
@@ -24,40 +23,40 @@ ngOnInit(): void {
 }
 
 onSubmit() {
-  
   if (this.loginForm.valid) {
     const email = this.loginForm.value.email;
     const password = this.loginForm.value.password;
-    const loginObj= {
-      email,password
-    }
-    
-    this.auth.login(loginObj).subscribe((res:any)=>{
-      if(res){
-        this.base.getUserData(res.data.id).subscribe((result)=>{
-          
-          if(result.data.userlevel){
-            let role = "admin"
-            sessionStorage.setItem("role",role)
-            sessionStorage.setItem("token",res.data.token)
-            sessionStorage.setItem("id",res.data.id)
+    const loginObj = {
+      email, password
+    };
+    this.auth.login(loginObj).subscribe((res: any) => {
+      console.log(res);
+      if (res && !!res.success == true) {
+        this.base.getUserData(res.data.id).subscribe((result) => {
+          if (!!result.data.userlevel == true) {
+            let role = "admin";
+            sessionStorage.setItem("role", role);
+            sessionStorage.setItem("token", res.data.token);
+            sessionStorage.setItem("id", res.data.id);
             this.auth.updateRolesAfterLogin();
-            this.router.navigateByUrl("/home")
-            }
-          })
-          }
-          else{
-            let role = "user"
-            sessionStorage.setItem("role",role)
-            sessionStorage.setItem("token",res.data.token)
-            sessionStorage.setItem("id",res.data.id)
+            this.router.navigateByUrl("/home");
+          } else {
+            let role = "user";
+            sessionStorage.setItem("role", role);
+            sessionStorage.setItem("token", res.data.token);
+            sessionStorage.setItem("id", res.data.id);
             this.auth.updateRolesAfterLogin();
-            this.router.navigateByUrl("/home")
+            this.router.navigateByUrl("/home");
           }
-        })
-        }
-        else{
-          alert("Hibás email vagy jelszó!")
+        });
+      } else {
+        console.error('Hibás jelszó vagy email');
       }
-    }
+    }, error => {
+      console.error("Email cím vagy jelszó nem megfelelő.");
+    });
+  } else {
+    console.error('Kérjük töltse ki a mezőket.');
   }
+}
+}

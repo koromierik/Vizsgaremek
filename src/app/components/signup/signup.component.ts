@@ -14,13 +14,14 @@ export class SignupComponent {
   password: any
   password_confirmation: any
   birthdate: Date = new Date()
+  code: number = 0;
   isValidEmail(email: string): boolean {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }
   isFormValid(): boolean {
     const isNameValid = !!this.name;
     const isEmailValid = this.isValidEmail(this.email);
-    const isPasswordValid = !!this.password && this.password.length >= 6;
+    const isPasswordValid = !!this.password && this.password.length >= 8;
     const isPasswordConfirmationValid = this.password_confirmation === this.password;
     const isBirthdateValid = !!this.birthdate;
 
@@ -34,32 +35,32 @@ export class SignupComponent {
   }
   signUp() {
     if (this.isFormValid()) {
-      this.auth.createUser(this.email, this.name, this.password, this.password_confirmation, this.birthdate).subscribe(
-        (response: any) => {
-          const email = this.email;
-          const password = this.password;
-          const loginObj = {
-            email, password
+      try {
+        this.auth.createUser(this.email, this.name, this.password, this.password_confirmation, this.birthdate).subscribe((res)=>{
+          console.log(res)
+          if(res.success=true){
+              this.router.navigate(['/verifyEmail'], {
+                queryParams: {
+                  email: this.email,
+                  password: this.password
+                }
+              });
           }
-          this.auth.login(loginObj).subscribe((res: any) => {
-            if (res) {
-              alert("Sikeres regisztráció!");
-              sessionStorage.setItem("token", res.data.token)
-              sessionStorage.setItem("id", res.data.id)
-              this.router.navigateByUrl("/home")
-            }
-            else {
-              alert("Sikertelen bejelentkezés")
-            }
-          })
-        },
-        (error: any) => {
-          console.error('Sign-up error:', error);
-          alert('A megadott email cím már regisztrálva van.');
-        }
-      );
+        });
+      } catch (error) {
+        console.error('Regisztrációs hiba:', error);
+        this.showErrorMessage('A megadott email cím már regisztrálva van.');
+      }
     } else {
-      console.error('Az űrlap érvénytelen. Kérjük, ellenőrizze a megadott információkat.');
+      console.error('Az űrlap nem érvényes. Kérjük, ellenőrizze a megadott információkat.');
     }
+  }
+
+showErrorMessage(message: string) {
+    console.error(message);
+}
+
+showSuccessMessage() {
+    console.log("Sikeres regisztráció!");
   }
 }

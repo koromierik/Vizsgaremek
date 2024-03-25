@@ -18,7 +18,7 @@ import { Component, OnInit } from '@angular/core';
           this.userData = response;
         },
         (error) => {
-          console.error('Error fetching data:', error);
+          console.error('Hiba történt az adatok lekérése során:', error);
         }
       );
     }
