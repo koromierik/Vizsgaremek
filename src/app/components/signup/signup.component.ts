@@ -39,7 +39,7 @@ export class SignupComponent {
         this.auth.createUser(this.email, this.name, this.password, this.password_confirmation, this.birthdate).subscribe((res)=>{
           console.log(res)
           if(res.success=true){
-              this.router.navigate(['/verifyEmail'], {
+              this.router.navigate(['/movierating'], {
                 queryParams: {
                   email: this.email,
                   password: this.password
